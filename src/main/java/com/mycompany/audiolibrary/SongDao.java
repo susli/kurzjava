@@ -13,7 +13,7 @@ public interface SongDao {
 	 * @param Searched name
 	 * @return List of Songs with the chosen name. Never Null.  
 	 */
-	List<Song> findbyName(String name);
+	List<Song> findByName(String name);
 	/**
 	 * 
 	 * @param album Searched album

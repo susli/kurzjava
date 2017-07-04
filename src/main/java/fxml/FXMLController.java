@@ -125,6 +125,7 @@ public class FXMLController implements Initializable {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
     /**
      * Method of updating filter of genres.
      */

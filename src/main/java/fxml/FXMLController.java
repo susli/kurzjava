@@ -110,7 +110,9 @@ public class FXMLController implements Initializable {
          assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'Scene.fxml'.";
 
     }
-    
+    /**
+     * Method of updating filter of Interprets.
+     */
     @FXML
     void handleSearchButton(ActionEvent event) {
         System.out.println("Hledej");
@@ -131,6 +133,8 @@ public class FXMLController implements Initializable {
     void handleSearchBox(ActionEvent event){
         System.out.println("SearchBox");
     }
+    
+    
     
     
     @Override

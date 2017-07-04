@@ -65,7 +65,7 @@ public class SongDaoImp implements SongDao{
 	}
 
 	@Override
-	public List<Song> findbyName(String name) {
+	public List<Song> findByName(String name) {
 		List<Song> pomSongs = new ArrayList<>();
 		for (Song song : pomSongs) {
 			if (song.getName().equals(name))

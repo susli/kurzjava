@@ -13,7 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -22,12 +22,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
-=======
+//=======
 import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
->>>>>>> origin/master
+//>>>>>>> origin/master
 
 
 public class FXMLController implements Initializable {

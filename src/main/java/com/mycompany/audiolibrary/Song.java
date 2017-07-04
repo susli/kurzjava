@@ -27,12 +27,28 @@ public class Song {
 	public Song(String name, String interpret, String album, int songNumber, int year, String genre, String length) {
 		super();
 		this.name=name;
+		if(interpret==null) {
+		this.interpret = "NaN";
+		}else {
 		this.interpret = interpret;
-		this.album = album;
+		}
+		if(album==null) {
+			this.album = "NaN";
+		}else {
+			this.album = album;
+		}
 		this.songNumber = songNumber;
 		this.year = year;
-		this.genre = genre;
-		this.length = length;
+		if(genre==null) {
+			this.genre = "NaN";
+		}else {
+			this.genre = genre;
+		}
+		if(length==null) {
+			this.length = "NaN";
+		}else {
+			this.length = length;
+		}
 	}
 
 	public Song() {

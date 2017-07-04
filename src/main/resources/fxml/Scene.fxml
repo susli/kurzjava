@@ -54,7 +54,7 @@
                 <Button id="FHledejButton" fx:id="searchButton" mnemonicParsing="false" text="Hledej" />
               </items>
             </ToolBar>
-            <TableView VBox.vgrow="ALWAYS">
+            <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
                <columns>
                   <TableColumn id="Dskladba" fx:id="trackNumber" prefWidth="79.0" text="Skladba Č." />
                   <TableColumn id="Dnazev" fx:id="name" prefWidth="71.0" text="Název" />

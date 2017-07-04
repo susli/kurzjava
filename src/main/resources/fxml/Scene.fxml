@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.SceneController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Interpret" />
+            <ChoiceBox id="Finterpret" fx:id="Minterpret" prefWidth="150.0" />
+            <Label text="Album" />
+            <ChoiceBox id="Falbum" fx:id="Malbum" layoutX="10.0" layoutY="27.0" prefWidth="150.0" />
+            <Label text="Rok" />
+            <ChoiceBox id="Frok" fx:id="Mrok" layoutX="10.0" layoutY="66.0" prefWidth="150.0" />
+            <Label text="Žánr" />
+            <ChoiceBox id="Fzanr" fx:id="Mzanr" layoutX="10.0" layoutY="105.0" prefWidth="150.0" />
+            <Accordion />
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <ToolBar prefHeight="40.0" prefWidth="200.0">
+              <items>
+                  <TextField id="FHledejText" promptText="Hledej" />
+                <Button id="FHledejButton" mnemonicParsing="false" text="Hledej" />
+              </items>
+            </ToolBar>
+            <TableView VBox.vgrow="ALWAYS">
+               <columns>
+                  <TableColumn id="Dskladba" prefWidth="79.0" text="Skladba Č." />
+                  <TableColumn id="Dnazev" prefWidth="71.0" text="Název" />
+                  <TableColumn id="Dinterpret" prefWidth="75.0" text="Interpret" />
+                  <TableColumn id="Dalbum" prefWidth="75.0" text="Album" />
+                  <TableColumn id="Drok" prefWidth="75.0" text="Rok" />
+                  <TableColumn id="Dzanr" prefWidth="75.0" text="Žánr" />
+                  <TableColumn id="Ddelka" prefWidth="75.0" text="Délka" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

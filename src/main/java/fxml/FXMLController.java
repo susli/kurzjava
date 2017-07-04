@@ -1,20 +1,12 @@
 //package com.mycompany.audiolibrary;
 package fxml;
 
-import com.mycompany.audiolibrary.Song;
-import com.mycompany.audiolibrary.SongDao;
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
 public class FXMLController implements Initializable {
@@ -91,16 +83,16 @@ public class FXMLController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        filterInterpret = new SongDao() {};
+        //filterInterpret = new SongDao() {};
         updatefilterInterpret();
         
-        filterAlbum = new SongDao() {};
+        //filterAlbum = new SongDao() {};
         updatefilterAlbum();
         
-        filterYear = new SongDao() {};
+        //filterYear = new SongDao() {};
         updatefilterYear();
         
-        filterGenre = new SongDao() {};
+        //filterGenre = new SongDao() {};
         updatefilterGenre();
     }
 

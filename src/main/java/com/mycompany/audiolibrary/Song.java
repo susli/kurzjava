@@ -22,12 +22,16 @@ public class Song {
 
 	public Song() {
 		super();
+		this.name="name";
 		this.interpret = "interpret";
 		this.album = "album";
 		this.songNumber = 0;
 		this.year = 1970;
 		this.genre = "genre";
 		this.length = "length";
+	}
+	public String getName() {
+		return name;
 	}
 	public String getInterpret() {
 		return interpret;

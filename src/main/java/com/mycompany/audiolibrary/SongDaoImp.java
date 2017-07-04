@@ -5,7 +5,6 @@ import java.util.List;
 
 public class SongDaoImp implements SongDao{
 
-	// TEST DATA
 	List<Song> songs;
 	
 	public SongDaoImp() {
@@ -73,6 +72,46 @@ public class SongDaoImp implements SongDao{
 				pomSongs.add(song);
 		}
 		return pomSongs;
+	}
+
+	@Override
+	public List<String> getInterprets() {
+		List<String> pomStrings = new ArrayList<>();
+		for (Song songs : songs) {
+			if (!(pomStrings.contains(songs.getInterpret())))
+				pomStrings.add(songs.getInterpret());
+		}
+		return pomStrings;
+	}
+
+	@Override
+	public List<String> getYears() {
+		List<String> pomStrings = new ArrayList<>();
+		for (Song songs : songs) {
+			if (!(pomStrings.contains(String.valueOf(songs.getYear()))))
+				pomStrings.add(songs.getInterpret());
+		}
+		return pomStrings;
+	}
+
+	@Override
+	public List<String> getAlbums() {
+		List<String> pomStrings = new ArrayList<>();
+		for (Song songs : songs) {
+			if (!(pomStrings.contains(songs.getAlbum())))
+				pomStrings.add(songs.getInterpret());
+		}
+		return pomStrings;
+	}
+
+	@Override
+	public List<String> getGenres() {
+		List<String> pomStrings = new ArrayList<>();
+		for (Song songs : songs) {
+			if (!(pomStrings.contains(songs.getGenre())))
+				pomStrings.add(songs.getInterpret());
+		}
+		return pomStrings;
 	}
 
 }

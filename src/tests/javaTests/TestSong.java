@@ -1,11 +1,12 @@
 import com.mycompany.audiolibrary.Song;
-import junit.framework.TestCase;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by stepanmudra on 04.07.17.
  */
-public class TestSong extends TestCase{
+public class TestSong {
 
     Song song = new Song("Run to the hills", "Iron Maiden", "The number of the beast", 5, 1982, "Heavy metal", "3:52");
     @Test

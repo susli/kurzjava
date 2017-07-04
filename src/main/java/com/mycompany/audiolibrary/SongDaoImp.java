@@ -85,11 +85,11 @@ public class SongDaoImp implements SongDao{
 	}
 
 	@Override
-	public List<String> getYears() {
-		List<String> pomStrings = new ArrayList<>();
+	public List<Integer> getYears() {
+		List<Integer> pomStrings = new ArrayList<>();
 		for (Song songs : songs) {
-			if (!(pomStrings.contains(String.valueOf(songs.getYear()))))
-				pomStrings.add(songs.getInterpret());
+			if (!(pomStrings.contains(songs.getYear())))
+				pomStrings.add(songs.getYear());
 		}
 		return pomStrings;
 	}
@@ -99,7 +99,7 @@ public class SongDaoImp implements SongDao{
 		List<String> pomStrings = new ArrayList<>();
 		for (Song songs : songs) {
 			if (!(pomStrings.contains(songs.getAlbum())))
-				pomStrings.add(songs.getInterpret());
+				pomStrings.add(songs.getAlbum());
 		}
 		return pomStrings;
 	}
@@ -109,7 +109,7 @@ public class SongDaoImp implements SongDao{
 		List<String> pomStrings = new ArrayList<>();
 		for (Song songs : songs) {
 			if (!(pomStrings.contains(songs.getGenre())))
-				pomStrings.add(songs.getInterpret());
+				pomStrings.add(songs.getGenre());
 		}
 		return pomStrings;
 	}

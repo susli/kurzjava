@@ -147,7 +147,7 @@ public class SceneController implements Initializable {
         updatefilterYear();
         updatefilterGenre();
         
-        //Listeners for selection changes
+        //Listeners for selection changes of choicebox
         filterInterpret.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectInterpret() );
         filterAlbum.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectAlbum() );
         filterGenre.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectGenre() );

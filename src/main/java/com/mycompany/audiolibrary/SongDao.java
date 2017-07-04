@@ -10,7 +10,7 @@ public interface SongDao {
 	List<Song> findAll();
 	/**
 	 * 
-	 * @param Searched name
+	 * @param Searched name 
 	 * @return List of Songs with the chosen name. Never Null.  
 	 */
 	List<Song> findByName(String name);

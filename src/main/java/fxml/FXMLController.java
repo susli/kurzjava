@@ -3,6 +3,8 @@ package fxml;
 
 import com.mycompany.audiolibrary.Song;
 import com.mycompany.audiolibrary.SongDao;
+import com.mycompany.audiolibrary.SongDaoImp;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -31,7 +33,7 @@ import java.util.ResourceBundle;
 
 
 public class FXMLController implements Initializable {
-
+	private SongDao sd;
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -135,16 +137,10 @@ public class FXMLController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //filterInterpret = new SongDao() {};
+        sd= new SongDaoImp();
         updatefilterInterpret();
-        
-        //filterAlbum = new SongDao() {};
         updatefilterAlbum();
-        
-        //filterYear = new SongDao() {};
         updatefilterYear();
-        
-        //filterGenre = new SongDao() {};
         updatefilterGenre();
     }
 
@@ -152,21 +148,24 @@ public class FXMLController implements Initializable {
      * Method of updating filter of Interprets.
      */
     private void updatefilterInterpret() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	filterInterpret.getItems().clear();
+    	filterInterpret.setItems((ObservableList)FXCollections.observableList(sd.getInterprets()));
     }
 
     /**
      * Method of updating filter of Albums.
      */
     private void updatefilterAlbum() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	filterAlbum.getItems().clear();
+    	filterAlbum.setItems((ObservableList)FXCollections.observableList(sd.getAlbums()));
     }
 
     /**
      * Method of updating filter of years.
      */
     private void updatefilterYear() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	filterYear.getItems().clear();
+    	filterYear.setItems((ObservableList)FXCollections.observableList(sd.getYears()));
     }
 
     
@@ -174,7 +173,8 @@ public class FXMLController implements Initializable {
      * Method of updating filter of genres.
      */
     private void updatefilterGenre() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	filterGenre.getItems().clear();
+    	filterGenre.setItems((ObservableList)FXCollections.observableList(sd.getGenres()));
     }
     
     /**

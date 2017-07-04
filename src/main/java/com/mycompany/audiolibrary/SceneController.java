@@ -146,6 +146,12 @@ public class SceneController implements Initializable {
         updatefilterAlbum();
         updatefilterYear();
         updatefilterGenre();
+        
+        //Listeners for selection changes
+        filterInterpret.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectInterpret() );
+        filterAlbum.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectAlbum() );
+        filterGenre.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectGenre() );
+        filterYear.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectYear() );
     }
 
     /**
@@ -185,28 +191,29 @@ public class SceneController implements Initializable {
      * Method of select Interpret for filter output 
      */
     
-    private void selectInterpret(){
-        
+    void selectInterpret(){
+        System.out.println("selectInterpret");
     }
+    
     /**
      * Method of select Album for filter output 
      */
     private void selectAlbum(){
-        
+        System.out.println("selectAlbum");
     }
     
     /**
      * Method of select Year for filter output 
      */
     private void selectYear(){
-        
+        System.out.println("selectYear");
     }
     
     /**
      * Method of select Genre for filter output 
      */
     private void selectGenre(){
-        
+        System.out.println("selectGenre");
     }
     
     

@@ -13,7 +13,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Soubor">
             <items>
-              <MenuItem fx:id="selectFile" mnemonicParsing="false" text="Přidat soubor" />
+              <MenuItem fx:id="selectFile" mnemonicParsing="false" onAction="#handleOpenFile" text="Přidat soubor" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Upravit">
@@ -39,7 +39,7 @@
             <Label text="Rok" />
             <ChoiceBox id="Frok" fx:id="filterYear" layoutX="10.0" layoutY="66.0" prefWidth="150.0" />
             <Label text="Žánr" />
-            <ChoiceBox id="Fzanr" fx:id="filterAlbum" layoutX="10.0" layoutY="105.0" prefWidth="150.0" />
+            <ChoiceBox id="Fzanr" fx:id="filterGenre" layoutX="10.0" layoutY="105.0" prefWidth="150.0" />
             <Accordion />
             <HBox prefHeight="100.0" prefWidth="200.0" />
          </children>
@@ -54,7 +54,7 @@
                 <Button id="FHledejButton" fx:id="searchButton" mnemonicParsing="false" text="Hledej" />
               </items>
             </ToolBar>
-            <TableView VBox.vgrow="ALWAYS">
+            <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
                <columns>
                   <TableColumn id="Dskladba" fx:id="trackNumber" prefWidth="79.0" text="Skladba Č." />
                   <TableColumn id="Dnazev" fx:id="name" prefWidth="71.0" text="Název" />

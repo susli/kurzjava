@@ -108,5 +108,20 @@ public class Song {
 	public String getLength() {
 		return length;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Song)) return false;
+		if (obj == this) return false;
+		Song objSong = (Song) obj;
+		if (!this.name.equals(objSong.name)) return false;
+		if (!this.album.equals(objSong.album)) return false;
+		if (!this.genre.equals(objSong.genre)) return false;
+		if (!this.interpret.equals(objSong.interpret)) return false;
+		if (!this.length.equals(objSong.length)) return false;
+		if (this.year != objSong.year) return false;
+		if (this.songNumber == objSong.songNumber) return false;
+		return true;
+	}
 
 }

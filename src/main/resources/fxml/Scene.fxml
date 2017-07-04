@@ -7,13 +7,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.SceneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.audiolibrary.SceneController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Soubor">
             <items>
-              <MenuItem fx:id="selectFile" mnemonicParsing="false" onAction="#handleOpenFile" text="Přidat soubor" />
+              <MenuItem fx:id="selectFile" mnemonicParsing="false" text="Přidat soubor" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Upravit">
@@ -33,13 +33,13 @@
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Interpret" />
-            <ChoiceBox id="Finterpret" fx:id="filterInterpret" onMouseDragExited="#selectInterpret" prefWidth="150.0" />
+            <ChoiceBox id="Finterpret" fx:id="filterInterpret" prefWidth="150.0" />
             <Label text="Album" />
-            <ChoiceBox id="Falbum" fx:id="filterAlbum" layoutX="10.0" layoutY="27.0" onMouseDragExited="#selectAlbum" prefWidth="150.0" />
+            <ChoiceBox id="Falbum" fx:id="filterAlbum" layoutX="10.0" layoutY="27.0" prefWidth="150.0" />
             <Label text="Rok" />
-            <ChoiceBox id="Frok" fx:id="filterYear" layoutX="10.0" layoutY="66.0" onMouseDragExited="#selectYear" prefWidth="150.0" />
+            <ChoiceBox id="Frok" fx:id="filterYear" layoutX="10.0" layoutY="66.0" prefWidth="150.0" />
             <Label text="Žánr" />
-            <ChoiceBox id="Fzanr" fx:id="filterGenre" layoutX="10.0" layoutY="105.0" onMouseDragExited="#selectGenre" prefWidth="150.0" />
+            <ChoiceBox id="Fzanr" fx:id="filterGenre" layoutX="10.0" layoutY="105.0" prefWidth="150.0" />
             <Accordion />
             <HBox prefHeight="100.0" prefWidth="200.0" />
          </children>

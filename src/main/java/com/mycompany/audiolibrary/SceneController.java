@@ -1,5 +1,5 @@
 //package com.mycompany.audiolibrary;
-package fxml;
+package com.mycompany.audiolibrary;
 
 import com.mycompany.audiolibrary.Song;
 import com.mycompany.audiolibrary.SongDao;
@@ -32,7 +32,7 @@ import java.util.ResourceBundle;
 //>>>>>>> origin/master
 
 
-public class FXMLController implements Initializable {
+public class SceneController implements Initializable {
 	private SongDao sd;
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;

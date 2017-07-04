@@ -112,9 +112,7 @@ public class SceneController implements Initializable {
          assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'Scene.fxml'.";
 
     }
-    /**
-     * Method of updating filter of Interprets.
-     */
+    
     @FXML
     void handleSearchButton(ActionEvent event) {
         System.out.println("Hledej");
@@ -122,8 +120,23 @@ public class SceneController implements Initializable {
     }
     
     @FXML
-    void handleSelectFile(ActionEvent event){
+    private void handleSelectFile(ActionEvent event) throws MalformedURLException {
         System.out.println("SelectFile");
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Choose audio file");
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("mp3", "*.mp3"));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("wav", "*.wav"));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("ALL Files", "*.*"));
+
+        File workingDirectory = new File(System.getProperty("user.dir")); // aktuální složka programu
+        fc.setInitialDirectory(workingDirectory);
+
+        List<File> files = fc.showOpenMultipleDialog(null);
+
+        if (files == null) {
+            return;
+
+        }  
     }
     
     @FXML

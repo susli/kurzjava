@@ -112,7 +112,7 @@ public class Song {
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof Song)) return false;
-		if (obj == this) return false;
+		if (obj == this) return false; 
 		Song objSong = (Song) obj;
 		if (!this.name.equals(objSong.name)) return false;
 		if (!this.album.equals(objSong.album)) return false;

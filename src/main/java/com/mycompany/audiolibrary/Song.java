@@ -22,7 +22,7 @@ public class Song {
 	 * @param songNumber Integer variable means number of song in an album. Not null.
 	 * @param year Integer variable represents year of  the song. Not null.
 	 * @param genre String variable means genders of song.
-	 * @param length String variable for length of song.
+	 * @param length String variable for length of song. 
 	 */
 	public Song(String name, String interpret, String album, int songNumber, int year, String genre, String length) {
 		super();

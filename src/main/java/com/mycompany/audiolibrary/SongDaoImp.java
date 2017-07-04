@@ -27,7 +27,7 @@ public class SongDaoImp implements SongDao{
 	@Override
 	public List<Song> findByAlbum(String album) {
 		List<Song> pomSongs = new ArrayList<>();
-		for (Song song : pomSongs) {
+		for (Song song : songs) {
 			if (song.getAlbum().equals(album))
 				pomSongs.add(song);
 		}
@@ -37,7 +37,7 @@ public class SongDaoImp implements SongDao{
 	@Override
 	public List<Song> findByInterpret(String interpret) {
 		List<Song> pomSongs = new ArrayList<>();
-		for (Song song : pomSongs) {
+		for (Song song : songs) {
 			if (song.getInterpret().equals(interpret))
 				pomSongs.add(song);
 		}
@@ -47,7 +47,7 @@ public class SongDaoImp implements SongDao{
 	@Override
 	public List<Song> findByGenre(String genre) {
 		List<Song> pomSongs = new ArrayList<>();
-		for (Song song : pomSongs) {
+		for (Song song : songs) {
 			if (song.getGenre().equals(genre))
 				pomSongs.add(song);
 		}
@@ -57,7 +57,7 @@ public class SongDaoImp implements SongDao{
 	@Override
 	public List<Song> findByYear(int year) {
 		List<Song> pomSongs = new ArrayList<>();
-		for (Song song : pomSongs) {
+		for (Song song : songs) {
 			if (song.getYear() == year)
 				pomSongs.add(song);
 		}
@@ -67,7 +67,7 @@ public class SongDaoImp implements SongDao{
 	@Override
 	public List<Song> findByName(String name) {
 		List<Song> pomSongs = new ArrayList<>();
-		for (Song song : pomSongs) {
+		for (Song song : songs) {
 			if (song.getName().equals(name))
 				pomSongs.add(song);
 		}

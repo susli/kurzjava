@@ -1,6 +1,7 @@
 package com.mycompany.audiolibrary;
 
 public class Song {
+	private String name;
 	private String interpret;
 	private String album;
 	private int songNumber;
@@ -8,9 +9,9 @@ public class Song {
 	private String genre;
 	private String length;
 	
-	
-	public Song(String interpret, String album, int songNumber, int year, String genre, String length) {
+	public Song(String name, String interpret, String album, int songNumber, int year, String genre, String length) {
 		super();
+		this.name=name;
 		this.interpret = interpret;
 		this.album = album;
 		this.songNumber = songNumber;

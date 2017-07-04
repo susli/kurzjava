@@ -1,7 +1,10 @@
 //package com.mycompany.audiolibrary;
 package fxml;
 
+import com.mycompany.audiolibrary.Song;
+import com.mycompany.audiolibrary.SongDao;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,6 +42,9 @@ public class FXMLController implements Initializable {
 
     @FXML // fx:id="album"
     private TableColumn<?, ?> album; // Value injected by FXMLLoader
+    
+    @FXML // fx:id="filterGenre"
+    private ChoiceBox<?> filterGenre; // Value injected by FXMLLoader
 
     @FXML // fx:id="length"
     private TableColumn<?, ?> length; // Value injected by FXMLLoader
@@ -80,10 +86,49 @@ public class FXMLController implements Initializable {
         assert filterAlbum != null : "fx:id=\"filterAlbum\" was not injected: check your FXML file 'Scene.fxml'.";
         assert selectFile != null : "fx:id=\"selectFile\" was not injected: check your FXML file 'Scene.fxml'.";
         assert searchBox != null : "fx:id=\"searchBox\" was not injected: check your FXML file 'Scene.fxml'.";
+        assert filterGenre != null : "fx:id=\"filterGenre\" was not injected: check your FXML file 'Scene.fxml'.";
 
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TO
+        filterInterpret = new SongDao() {};
+        updatefilterInterpret();
+        
+        filterAlbum = new SongDao() {};
+        updatefilterAlbum();
+        
+        filterYear = new SongDao() {};
+        updatefilterYear();
+        
+        filterGenre = new SongDao() {};
+        updatefilterGenre();
+    }
+
+    /**
+     * Method of updating filter of Interprets.
+     */
+    private void updatefilterInterpret() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * Method of updating filter of Albums.
+     */
+    private void updatefilterAlbum() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * Method of updating filter of years.
+     */
+    private void updatefilterYear() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * Method of updating filter of genres.
+     */
+    private void updatefilterGenre() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

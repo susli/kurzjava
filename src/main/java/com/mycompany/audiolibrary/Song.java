@@ -1,7 +1,8 @@
 package com.mycompany.audiolibrary;
 
 /**
- * Class Song make own object, which is supposed to represent one song with attributes.
+ * Class Song make own object, which is supposed to represent one song with
+ * attributes.
  */
 public class Song {
 
@@ -16,13 +17,21 @@ public class Song {
 	/**
 	 * Constructor of song.
 	 * 
-	 * @param name String variable which represents name of song. Not null.
-	 * @param interpret String variable which represents song's interpret name.
-	 * @param album String variable which represents name of album from which song came.
-	 * @param songNumber Integer variable means number of song in an album. Not null.
-	 * @param year Integer variable represents year of  the song. Not null.
-	 * @param genre String variable means genders of song.
-	 * @param length String variable for length of song. 
+	 * @param name
+	 *            String variable which represents name of song. Not null.
+	 * @param interpret
+	 *            String variable which represents song's interpret name.
+	 * @param album
+	 *            String variable which represents name of album from which song
+	 *            came.
+	 * @param songNumber
+	 *            Integer variable means number of song in an album. Not null.
+	 * @param year
+	 *            Integer variable represents year of the song. Not null.
+	 * @param genre
+	 *            String variable means genders of song.
+	 * @param length
+	 *            String variable for length of song.
 	 */
 	public Song(String name, String interpret, String album, int songNumber, int year, String genre, String length) {
 		this.name = name;
@@ -33,8 +42,9 @@ public class Song {
 		this.genre = genre;
 		this.length = length;
 	}
-	
-	public Song() {}
+
+	public Song() {
+	}
 
 	/**
 	 * Method to return name of song.
@@ -153,7 +163,5 @@ public class Song {
 			return false;
 		return true;
 	}
-	
-	
 
 }

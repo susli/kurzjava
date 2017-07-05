@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SongDaoImpl implements SongDao{
 
-	List<Song> songs;
+	private List<Song> songs;
 	
 	public SongDaoImpl() {
 		songs = new ArrayList<>(); 
@@ -66,9 +66,12 @@ public class SongDaoImpl implements SongDao{
 
 	@Override
 	public List<Song> findByName(String name) {
+		if (name==null)
+			if (name.equals(""))
+				return songs;
 		List<Song> pomSongs = new ArrayList<>();
 		for (Song song : songs) {
-			if (song.getName().equals(name))
+			if (song.getName().contains(name))
 				pomSongs.add(song);
 		}
 		return pomSongs;
@@ -122,5 +125,7 @@ public class SongDaoImpl implements SongDao{
 		}
 		return pomStrings;
 	}
+
+
 
 }

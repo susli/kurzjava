@@ -8,7 +8,7 @@ public interface SongDao {
 	 * @return List of all Songs. Never Null.
 	 */
 	List<Song> findAll();
-
+	
 	/**
 	 * 
 	 * @param Searched name
@@ -67,5 +67,5 @@ public interface SongDao {
 	 * @return List of Strings all genres. Never Null.
 	 */
 	List<String> getGenres();
-
+	
 }

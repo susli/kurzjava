@@ -23,8 +23,7 @@ public class SongDaoImpl implements SongDao{
 		songs.add(new Song("Hruza", "aDěs", "Makeš", 3, 2017, "rock", "7:31"));
 		songs.add(new Song("Tento text má strašlivě dlouhý důvod ke své existenci, ale to je na jiné povídaní. Chcete ho slyšet? Tak tedy dobře... Slyšte slyšte - přichází Mistr Bard. Byl nebyl jeden svět, kde existoval mír, ale nebyl to jen takový mír... Exitovali toitž roboti. Ti se měli rádi - dokud byly v aréně. Mlátili se a ničili, až hrůza. Ale všichni byly spojeni a tak byl na světě mír. WIN-WIN.", "Mr.Robot", "Robots", 3, 2017, "robotic", "23:59:55"));
 	for (int i = 0; i < 20; i++) {
-		songs.add(new Song("song"+i, "já 1", "Moje boží album", i+1, 2017, "rock", "00:00"));
-		
+		songs.add(new Song("song"+i, "já 1", "Moje boží album", i+1, 2017, "rock", "00:00"));	
 		}
 		songs.add(new Song("BABYMETAL - ギミチョコ！！-", "オフィシャルサイト", "Toy's Factory", 12, 2015, "k-metal", "6:12"));
 		songs.add(new Song("نيويورك", "القاعدة", "سبتمبر", 7, 2001, "explosiv metal", "2:12"));

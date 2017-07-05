@@ -13,7 +13,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.cell.PropertyValueFactory;
+import com.mycompany.audiolibrary.SongDaoImplFromFiles;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.List;
+import javafx.stage.FileChooser;
 
 public class SceneController implements Initializable {
 
@@ -67,10 +73,15 @@ public class SceneController implements Initializable {
 
     @FXML // fx:id="tableView"
     private TableView<?> tableView; // Value injected by FXMLLoader
+    
+    
+    @FXML // fx:id="openFile"
+    private MenuItem openFile; // Value injected by FXMLLoader
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert searchButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file 'Scene.fxml'.";
+        assert openFile != null : "fx:id=\"openFile\" was not injected: check your FXML file 'Scene.fxml'.";
         assert trackNumber != null : "fx:id=\"trackNumber\" was not injected: check your FXML file 'Scene.fxml'.";
         assert year != null : "fx:id=\"year\" was not injected: check your FXML file 'Scene.fxml'.";
         assert filterYear != null : "fx:id=\"filterYear\" was not injected: check your FXML file 'Scene.fxml'.";
@@ -103,6 +114,28 @@ public class SceneController implements Initializable {
     void handleSearch(ActionEvent event) {
         handleSearchButton(event);
     }
+    
+    /**
+    @FXML
+     void handleOpenFile(ActionEvent event) throws MalformedURLException {
+        System.out.println("open file");
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Choose audio file");
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("mp3", "*.mp3"));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("wav", "*.wav"));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("ALL Files", "*.*"));
+
+        File workingDirectory = new File(System.getProperty("user.dir")); // aktuální složka programu
+        fc.setInitialDirectory(workingDirectory);
+
+        List<File> files = fc.showOpenMultipleDialog(null);
+
+        if (files == null) {
+            return;
+
+        }
+    }
+    */
 
     /**
      * Method to initialize options at startup

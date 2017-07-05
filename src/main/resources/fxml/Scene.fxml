@@ -75,4 +75,15 @@
          </children>
       </VBox>
    </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Soubor">
+            <items>
+              <MenuItem fx:id="openFile" mnemonicParsing="false" text="Otevřít" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
 </BorderPane>

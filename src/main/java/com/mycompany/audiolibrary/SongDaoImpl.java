@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SongDaoImp implements SongDao{
+public class SongDaoImpl implements SongDao{
 
 	List<Song> songs;
 	
-	public SongDaoImp() {
+	public SongDaoImpl() {
 		songs = new ArrayList<>();
-		songs.add(new Song());
 		songs.add(new Song("IDK", "Corko", "Húko", 12, 1999, "speed metal", "12:12"));
 		songs.add(new Song("Netuším", "Lopata", "Ostrava", 12, 2015, "slow metal", "16:33"));
 		songs.add(new Song("IDK", "Nikoto", "Assembly", 12, 2014, "pop", "3:13"));

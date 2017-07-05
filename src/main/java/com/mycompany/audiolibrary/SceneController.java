@@ -3,7 +3,7 @@ package com.mycompany.audiolibrary;
 
 import com.mycompany.audiolibrary.Song;
 import com.mycompany.audiolibrary.SongDao;
-import com.mycompany.audiolibrary.SongDaoImp;
+import com.mycompany.audiolibrary.SongDaoImpl;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -155,7 +155,7 @@ public class SceneController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        sd= new SongDaoImp();
+        sd= new SongDaoImpl();
         updatefilterInterpret();
         updatefilterAlbum();
         updatefilterYear();

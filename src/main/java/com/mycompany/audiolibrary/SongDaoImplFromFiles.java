@@ -25,9 +25,6 @@ public class SongDaoImplFromFiles implements SongDao {
     //      System.out.println("open file");
     FileChooser fc = new FileChooser();
     //  fc.setTitle("Choose audio file");
-    // fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("mp3", "*.mp3"));
-    //  fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("wav", "*.wav"));
-    // fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("ALL Files", "*.*"));
 
     private File srcDirectory = new File(
             "src" + File.separator + "main" + File.separator + "resources" + File.separator + "files");
@@ -38,6 +35,10 @@ public class SongDaoImplFromFiles implements SongDao {
 
         // File srcDirectory = new File(System.getProperty("user.dir")); // aktuální složka programu
         fc.setInitialDirectory(srcDirectory);
+
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("mp3", "*.mp3"));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("wav", "*.wav"));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("ALL Files", "*.*"));
 
         //List<File> filess = fc.showOpenMultipleDialog(null);
         songs = new ArrayList<>();

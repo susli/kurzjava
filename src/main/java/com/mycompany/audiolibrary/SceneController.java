@@ -211,40 +211,59 @@ public class SceneController implements Initializable {
 	 */
 
 	void selectInterpret() {
+		if (filterInterpret.getValue() != null)	{	
 		ObservableList data=FXCollections.observableArrayList(
 				sd.findByInterpret(filterInterpret.getValue().toString())
 				);
 		tableView.setItems(data);
+		filterAlbum.setValue(null);
+		filterYear.setValue(null);
+		filterGenre.setValue(null);
+		}
 	}
 
 	/**
 	 * Method of select Album for filter output
 	 */
 	private void selectAlbum() {
+		if (filterAlbum.getValue() != null)	{	
 		ObservableList data=FXCollections.observableArrayList(
-				sd.findByAlbum(filterAlbum.getValue().toString())
-				);
+		sd.findByAlbum(filterAlbum.getValue().toString()));
 		tableView.setItems(data);
+		filterInterpret.setValue(null);
+		filterYear.setValue(null);
+		filterGenre.setValue(null);
+		}
 	}
 
 	/**
 	 * Method of select Year for filter output
 	 */
 	private void selectYear() {
+		if (filterYear.getValue() != null)	{	
 		ObservableList data=FXCollections.observableArrayList(
 				sd.findByYear(Integer.valueOf(filterYear.getValue().toString()))
 				);
 		tableView.setItems(data);
+		filterInterpret.setValue(null);
+		filterAlbum.setValue(null);
+		filterGenre.setValue(null);
+		}
 	}
 
 	/**
 	 * Method of select Genre for filter output
 	 */
 	private void selectGenre() {
+		if (filterGenre.getValue() != null)	{	
 		ObservableList data=FXCollections.observableArrayList(
 				sd.findByGenre(filterGenre.getValue().toString())
 				);
 		tableView.setItems(data);
+		filterInterpret.setValue(null);
+		filterAlbum.setValue(null);
+		filterYear.setValue(null);
+		}
 	}
 
 	/**

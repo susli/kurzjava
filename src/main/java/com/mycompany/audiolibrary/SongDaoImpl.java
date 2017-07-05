@@ -29,6 +29,7 @@ public class SongDaoImpl implements SongDao{
 		songs.add(new Song("BABYMETAL - ギミチョコ！！-", "オフィシャルサイト", "Toy's Factory", 12, 2015, "k-metal", "6:12"));
 		songs.add(new Song("نيويورك", "القاعدة", "سبتمبر", 7, 2001, "explosiv metal", "2:12"));
 		songs.add(new Song("Россия", "Путин", "свобода", 2, 2012, "techno", "36:16"));
+		songs.add(new Song("Lálův song", "Franta Lála", "Lálovi Láloviny", 5, 2017, "rock", "3:13"));
 	} 
 	
 	@Override

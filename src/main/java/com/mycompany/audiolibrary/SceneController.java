@@ -263,6 +263,7 @@ public class SceneController implements Initializable {
 		filterInterpret.setValue(null);
 		filterAlbum.setValue(null);
 		filterYear.setValue(null);
+	
 		}
 	}
 

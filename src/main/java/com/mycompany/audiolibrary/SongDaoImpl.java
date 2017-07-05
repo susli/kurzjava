@@ -17,6 +17,8 @@ public class SongDaoImpl implements SongDao{
 		songs.add(new Song("Jako", "Despacito", "Lusi", 3, 2017, "pop", "4:51"));
 		songs.add(new Song("Jako", "Kura", "Makeš", 2, 2012, "rock", "5:40"));
 		songs.add(new Song("IDK", "Mezinkoš", "Makeš", 3, 2017, "rock", "4:13"));
+		songs.add(new Song("Neruš", "basket", "kRál", 1, 1999, "pop", "4:11"));
+		songs.add(new Song("Never", "Mezinkoš", "Makeš", 3, 2017, "rock", "4:13"));
 	}
 	
 	@Override
@@ -71,7 +73,7 @@ public class SongDaoImpl implements SongDao{
 				return songs;
 		List<Song> pomSongs = new ArrayList<>();
 		for (Song song : songs) {
-			if (song.getName().contains(name))
+			if (SongDaoImpl.containsIgnoreCase(song.getName(), name))
 				pomSongs.add(song);
 		}
 		return pomSongs;
@@ -126,6 +128,26 @@ public class SongDaoImpl implements SongDao{
 		return pomStrings;
 	}
 
+	
+	private static boolean containsIgnoreCase(String src, String what) {
+	    final int length = what.length();
+	    if (length == 0)
+	        return true; 
+
+	    final char firstLo = Character.toLowerCase(what.charAt(0));
+	    final char firstUp = Character.toUpperCase(what.charAt(0));
+
+	    for (int i = src.length() - length; i >= 0; i--) {
+	        final char ch = src.charAt(i);
+	        if (ch != firstLo && ch != firstUp)
+	            continue;
+
+	        if (src.regionMatches(true, i, what, 0, length))
+	            return true;
+	    }
+
+	    return false;
+	}
 
 
 }

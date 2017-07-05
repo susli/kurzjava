@@ -18,16 +18,15 @@ public class Song {
 	 * Constructor of song.
 	 * 
 	 * @param name
-	 *            String variable which represents name of song. Not null.
+	 *            String variable which represents name of song.
 	 * @param interpret
 	 *            String variable which represents song's interpret name.
 	 * @param album
-	 *            String variable which represents name of album from which song
-	 *            came.
+	 *            String variable which represents name of album from which song came.
 	 * @param songNumber
-	 *            Integer variable means number of song in an album. Not null.
+	 *            Integer variable means number of song in an album. 
 	 * @param year
-	 *            Integer variable represents year of the song. Not null.
+	 *            Integer variable represents year of the song.
 	 * @param genre
 	 *            String variable means genders of song.
 	 * @param length
@@ -43,8 +42,7 @@ public class Song {
 		this.length = length;
 	}
 
-	public Song() {
-	}
+	public Song() {}
 
 	/**
 	 * Method to return name of song.

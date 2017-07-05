@@ -12,15 +12,38 @@
    <left>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Interpret" />
-            <ChoiceBox id="Finterpret" fx:id="filterInterpret" prefWidth="150.0" />
-            <Label text="Album" />
-            <ChoiceBox id="Falbum" fx:id="filterAlbum" layoutX="10.0" layoutY="27.0" prefWidth="150.0" />
-            <Label text="Rok" />
-            <ChoiceBox id="Frok" fx:id="filterYear" layoutX="10.0" layoutY="66.0" prefWidth="150.0" />
-            <Label text="Žánr" />
-            <ChoiceBox id="Fzanr" fx:id="filterGenre" layoutX="10.0" layoutY="105.0" prefWidth="150.0" />
-            <Separator prefHeight="24.0" prefWidth="100.0" />
+            <Label text="Interpret">
+               <padding>
+                  <Insets left="5.0" />
+               </padding></Label>
+            <ChoiceBox id="Finterpret" fx:id="filterInterpret" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets left="4.0" right="4.0" />
+               </VBox.margin></ChoiceBox>
+            <Label text="Album">
+               <padding>
+                  <Insets left="5.0" />
+               </padding></Label>
+            <ChoiceBox id="Falbum" fx:id="filterAlbum" layoutX="10.0" layoutY="27.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets left="4.0" right="4.0" />
+               </VBox.margin></ChoiceBox>
+            <Label text="Rok">
+               <padding>
+                  <Insets left="5.0" />
+               </padding></Label>
+            <ChoiceBox id="Frok" fx:id="filterYear" layoutX="10.0" layoutY="66.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets left="4.0" right="4.0" />
+               </VBox.margin></ChoiceBox>
+            <Label text="Žánr">
+               <padding>
+                  <Insets left="5.0" />
+               </padding></Label>
+            <ChoiceBox id="Fzanr" fx:id="filterGenre" layoutX="10.0" layoutY="105.0" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets left="4.0" right="4.0" />
+               </VBox.margin></ChoiceBox>
             <Accordion />
             <HBox prefHeight="100.0" prefWidth="200.0" />
          </children>
@@ -45,6 +68,9 @@
                   <TableColumn id="Dzanr" fx:id="genre" minWidth="40.0" prefWidth="90.0" text="Žánr" />
                   <TableColumn id="delka" fx:id="length" minWidth="50.0" prefWidth="55.0" resizable="false" text="Délka" />
                </columns>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </TableView>
          </children>
       </VBox>

@@ -1,6 +1,7 @@
 package com.mycompany.audiolibrary;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SongDaoImp implements SongDao{
@@ -85,13 +86,22 @@ public class SongDaoImp implements SongDao{
 	}
 
 	@Override
-	public List<Integer> getYears() {
+	public List<String> getYears() {
 		List<Integer> pomStrings = new ArrayList<>();
+		// add
 		for (Song songs : songs) {
 			if (!(pomStrings.contains(songs.getYear())))
 				pomStrings.add(songs.getYear());
 		}
-		return pomStrings;
+		// sort
+		Collections.sort(pomStrings);
+		// copy
+		List<String> newPomStrings = new ArrayList<String>(pomStrings.size());
+		for (Integer myInt : pomStrings) {
+			newPomStrings.add(String.valueOf(myInt));
+		}
+		// return
+		return newPomStrings;
 	}
 
 	@Override

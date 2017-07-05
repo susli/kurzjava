@@ -107,6 +107,9 @@ public class SceneController implements Initializable {
 		filterGenre.setValue(null);
 	}
 
+        /**
+        * Method to initialize options at startup
+        */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		sd = new SongDaoImpl();
@@ -115,12 +118,17 @@ public class SceneController implements Initializable {
 		updatefilterYear();
 		updatefilterGenre();
 
-		// Listeners for selection changes of choicebox
+                /**
+                * Listeners for selection changes of choicebox
+                */
 		filterInterpret.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> selectInterpret());
 		filterAlbum.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> selectAlbum());
 		filterGenre.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> selectGenre());
 		filterYear.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> selectYear());
 
+                /**
+                * Set values for individual columns of the song table
+                */
 		trackNumber.setCellValueFactory(new PropertyValueFactory<Song, String>("songNumber"));
 		year.setCellValueFactory(new PropertyValueFactory<Song, String>("year"));
 		album.setCellValueFactory(new PropertyValueFactory<Song, String>("album"));
@@ -129,13 +137,13 @@ public class SceneController implements Initializable {
 		name.setCellValueFactory(new PropertyValueFactory<Song, String>("name"));
 		genre.setCellValueFactory(new PropertyValueFactory<Song, String>("genre"));
 		
-		ObservableList data=FXCollections.observableArrayList(
-				sd.findAll());
+		ObservableList data=FXCollections.observableArrayList(sd.findAll());
 		tableView.setItems(data);
 	}
 
 	/**
 	 * Method of updating filter of Interprets.
+         * Calls a method to get a list of interprets and displays them in the selection
 	 */
 	private void updatefilterInterpret() {
 		filterInterpret.getItems().clear();
@@ -144,6 +152,7 @@ public class SceneController implements Initializable {
 
 	/**
 	 * Method of updating filter of Albums.
+         * Calls a method to get a list of albums and displays them in the selection
 	 */
 	private void updatefilterAlbum() {
 		filterAlbum.getItems().clear();
@@ -152,6 +161,7 @@ public class SceneController implements Initializable {
 
 	/**
 	 * Method of updating filter of years.
+         * Calls a method to get a list of years and displays them in the selection
 	 */
 	private void updatefilterYear() {
 		filterYear.getItems().clear();
@@ -160,6 +170,7 @@ public class SceneController implements Initializable {
 
 	/**
 	 * Method of updating filter of genres.
+         * Calls a method to get a list of genres and displays them in the selection
 	 */
 	private void updatefilterGenre() {
 		filterGenre.getItems().clear();
@@ -168,6 +179,7 @@ public class SceneController implements Initializable {
 
 	/**
 	 * Method of select Interpret for filter output
+         * Fills the data into a table according to the selected Interpret
 	 */
         void selectInterpret() {
 		if (filterInterpret.getValue() != null)	{	
@@ -181,6 +193,7 @@ public class SceneController implements Initializable {
 
 	/**
 	 * Method of select Album for filter output
+         * Fills the data into a table according to the selected Album
 	 */
 	private void selectAlbum() {
 		if (filterAlbum.getValue() != null)	{	
@@ -195,6 +208,7 @@ public class SceneController implements Initializable {
 
 	/**
 	 * Method of select Year for filter output
+         * Fills the data into a table according to the selected year
 	 */
 	private void selectYear() {
 		if (filterYear.getValue() != null)	{	
@@ -208,6 +222,7 @@ public class SceneController implements Initializable {
 
 	/**
 	 * Method of select Genre for filter output
+         * Fills the data into a table according to the selected genre
 	 */
 	private void selectGenre() {
 		if (filterGenre.getValue() != null)	{	

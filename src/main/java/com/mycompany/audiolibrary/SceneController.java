@@ -98,7 +98,12 @@ public class SceneController implements Initializable {
         filterYear.setValue(null);
         filterGenre.setValue(null);
     }
-    
+
+    @FXML
+    void handleSearch(ActionEvent event) {
+        handleSearchButton(event);
+    }
+
     /**
      * Method to initialize options at startup
      */
@@ -117,6 +122,15 @@ public class SceneController implements Initializable {
         filterAlbum.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> selectAlbum());
         filterGenre.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> selectGenre());
         filterYear.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> selectYear());
+
+        searchBox.textProperty().addListener((observable, oldValue, newValue) -> {
+            ObservableList data = FXCollections.observableArrayList(sd.findByName(searchBox.getText()));
+            tableView.setItems(data);
+            filterAlbum.setValue(null);
+            filterInterpret.setValue(null);
+            filterYear.setValue(null);
+            filterGenre.setValue(null);
+        });
 
         /**
          * Set values for individual columns of the song table

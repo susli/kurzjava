@@ -54,7 +54,7 @@
          <children>
             <ToolBar prefHeight="38.0" prefWidth="526.0">
               <items>
-                  <TextField id="FHledejText" fx:id="searchBox" promptText="Hledej (Nazev)" />
+                  <TextField id="FHledejText" fx:id="searchBox" onAction="#handleSearchButton" onInputMethodTextChanged="#handleSearchButton" promptText="Hledej (Nazev)" />
                 <Button id="FHledejButton" fx:id="searchButton" mnemonicParsing="false" onAction="#handleSearchButton" text="Hledej" />
               </items>
             </ToolBar>

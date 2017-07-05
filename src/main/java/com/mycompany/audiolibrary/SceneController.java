@@ -109,7 +109,8 @@ public class SceneController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        sd = new SongDaoImpl();
+        //sd = new SongDaoImpl(); //dummy data
+        sd = new SongDaoImplFromFiles();//ze souborů
         updatefilterInterpret();
         updatefilterAlbum();
         updatefilterYear();

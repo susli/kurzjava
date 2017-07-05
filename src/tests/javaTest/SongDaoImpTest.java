@@ -19,25 +19,25 @@ public class SongDaoImpTest{
         List<Song> songs = songDao.findAll();
         Song song;
 
-        song = new Song("IDK", "Corko", "Húko", 12, 1999, "speed metal", "12:12");
+        song = new Song("Motor", "Corko", "Húko", 12, 1999, "speed metal", "12:12");
         assertTrue(song.equals(songs.get(0)));
 
-        song = new Song("Netuším", "Lopata", "Ostrava", 12, 2015, "slow metal", "16:33");
+        song = new Song("Netuší", "Lopata", "Ostrava", 12, 2015, "slow metal", "16:33");
         assertTrue(song.equals(songs.get(1)));
 
-        song = new Song("IDK", "Nikoto", "Assembly", 12, 2014, "pop", "3:13");
+        song = new Song("Vyprchává", "Nikoto", "Assembly", 12, 2014, "pop", "3:13");
         assertTrue(song.equals(songs.get(2)));
 
-        song = new Song("Možná", "Heyja", "Húko", 6, 1999, "speed metal", "4:50");
+        song = new Song("Maybe", "Heyja", "Húko", 6, 1999, "speed metal", "4:50");
         assertTrue(song.equals(songs.get(3)));
 
-        song = new Song("Jako", "Despacito", "Lusi", 3, 2017, "pop", "4:51");
+        song = new Song("Despacito", "Lusi", "WhAt", 3, 2017, "pop", "4:51");
         assertTrue(song.equals(songs.get(4)));
 
-        song = new Song("Jako", "Kura", "Makeš", 2, 2012, "rock", "5:40");
+        song = new Song("Kdo to ví?", "Kura", "Makeš", 2, 2012, "rock", "5:40");
         assertTrue(song.equals(songs.get(5)));
 
-        song = new Song("IDK", "Mezinkoš", "Makeš", 3, 2017, "rock", "4:13");
+        song = new Song("Posel", "Mezinkoš", "Makeš", 3, 2017, "rock", "4:13");
         assertTrue(song.equals(songs.get(6)));
 
         song = new Song();
@@ -48,8 +48,8 @@ public class SongDaoImpTest{
     public void findByAlbum() throws Exception {
         SongDao songDao = new SongDaoImpl();
         List<Song> songs = songDao.findByAlbum("Húko");
-        Song song = new Song("IDK", "Corko", "Húko", 12, 1999, "speed metal", "12:12");
-        Song song1 = new Song("Možná", "Heyja", "Húko", 6, 1999, "speed metal", "4:50");
+        Song song = new Song("Motor", "Corko", "Húko", 12, 1999, "speed metal", "12:12");
+        Song song1 = new Song("Maybe", "Heyja", "Húko", 6, 1999, "speed metal", "4:50");
 
         assertTrue(song.equals(songs.get(0)));
         assertTrue(song1.equals(songs.get(1)));
@@ -58,8 +58,8 @@ public class SongDaoImpTest{
     @Test
     public void findByInterpret() throws Exception {
         SongDao songDao = new SongDaoImpl();
-        Song song = new Song("Možná", "Heyja", "Húko", 6, 1999, "speed metal", "4:50");
-        Song song1 = new Song("Jako", "Kura", "Makeš", 2, 2012, "rock", "5:40");
+        Song song = new Song("Maybe", "Heyja", "Húko", 6, 1999, "speed metal", "4:50");
+        Song song1 = new Song("Kdo to ví?", "Kura", "Makeš", 2, 2012, "rock", "5:40");
         List<Song> songs = songDao.findByInterpret("Heyja");
 
         assertTrue(song.equals(songs.get(0)));
@@ -70,8 +70,8 @@ public class SongDaoImpTest{
     public void findByGenre() throws Exception {
         SongDao songDao = new SongDaoImpl();
         List<Song> songs = songDao.findByGenre("pop");
-        Song song = new Song("IDK", "Nikoto", "Assembly", 12, 2014, "pop", "3:13");
-        Song song1 = new Song("Jako", "Despacito", "Lusi", 3, 2017, "pop", "4:51");
+        Song song = new Song("Vyprchává", "Nikoto", "Assembly", 12, 2014, "pop", "3:13");
+        Song song1 = new Song("Despacito", "Lusi", "WhAt", 3, 2017, "pop", "4:51");
 
         assertTrue(song.equals(songs.get(0)));
         assertTrue(song1.equals(songs.get(1)));
@@ -81,7 +81,7 @@ public class SongDaoImpTest{
     public void findByYear() throws Exception {
         SongDao songDao = new SongDaoImpl();
         List<Song> songs = songDao.findByYear(2014);
-        Song song = new Song("IDK", "Nikoto", "Assembly", 12, 2014, "pop", "3:13");
+        Song song = new Song("Vyprchává", "Nikoto", "Assembly", 12, 2014, "pop", "3:13");
 
         assertTrue(song.equals(songs.get(0)));
     }
@@ -89,8 +89,8 @@ public class SongDaoImpTest{
     @Test
     public void findbyName() throws Exception {
         SongDao songDao = new SongDaoImpl();
-        List<Song> songs = songDao.findByName("Možná");
-        Song song = new Song("Možná", "Heyja", "Húko", 6, 1999, "speed metal", "4:50");
+        List<Song> songs = songDao.findByName("Maybe");
+        Song song = new Song("Maybe", "Heyja", "Húko", 6, 1999, "speed metal", "4:50");
 
         assertTrue(song.equals(songs.get(0)));
     }
@@ -104,7 +104,7 @@ public class SongDaoImpTest{
         assertEquals("Lopata", interprets.get(1));
         assertEquals("Nikoto", interprets.get(2));
         assertEquals("Heyja", interprets.get(3));
-        assertEquals("Despacito", interprets.get(4));
+        assertEquals("Lusi", interprets.get(4));
         assertEquals("Kura", interprets.get(5));
         assertEquals("Mezinkoš", interprets.get(6));
     }
@@ -132,7 +132,7 @@ public class SongDaoImpTest{
         assertEquals("Ostrava", albums.get(1));
         assertEquals("Assembly", albums.get(2));
         assertEquals("Húko", albums.get(0));
-        assertEquals("Lusi", albums.get(3));
+        assertEquals("WhAt", albums.get(3));
         assertEquals("Makeš", albums.get(4));
         assertEquals("Makeš", albums.get(4));
     }

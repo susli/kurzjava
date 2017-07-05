@@ -1,15 +1,15 @@
 package com.mycompany.audiolibrary;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class SongDaoImp implements SongDao{
+public class SongDaoImpl implements SongDao{
 
 	List<Song> songs;
 	
-	public SongDaoImp() {
-		songs = new ArrayList<>();
-		songs.add(new Song());
+	public SongDaoImpl() {
+		songs = new ArrayList<>(); 
 		songs.add(new Song("IDK", "Corko", "Húko", 12, 1999, "speed metal", "12:12"));
 		songs.add(new Song("Netuším", "Lopata", "Ostrava", 12, 2015, "slow metal", "16:33"));
 		songs.add(new Song("IDK", "Nikoto", "Assembly", 12, 2014, "pop", "3:13"));
@@ -81,17 +81,26 @@ public class SongDaoImp implements SongDao{
 			if (!(pomStrings.contains(songs.getInterpret())))
 				pomStrings.add(songs.getInterpret());
 		}
-		return pomStrings;
+		return pomStrings; 
 	}
 
 	@Override
-	public List<Integer> getYears() {
+	public List<String> getYears() {
 		List<Integer> pomStrings = new ArrayList<>();
+		// add
 		for (Song songs : songs) {
 			if (!(pomStrings.contains(songs.getYear())))
 				pomStrings.add(songs.getYear());
 		}
-		return pomStrings;
+		// sort
+		Collections.sort(pomStrings);
+		// copy
+		List<String> newPomStrings = new ArrayList<String>(pomStrings.size());
+		for (Integer myInt : pomStrings) {
+			newPomStrings.add(String.valueOf(myInt));
+		}
+		// return
+		return newPomStrings;
 	}
 
 	@Override

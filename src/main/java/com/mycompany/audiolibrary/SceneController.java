@@ -3,7 +3,7 @@ package com.mycompany.audiolibrary;
 
 import com.mycompany.audiolibrary.Song;
 import com.mycompany.audiolibrary.SongDao;
-import com.mycompany.audiolibrary.SongDaoImp;
+import com.mycompany.audiolibrary.SongDaoImpl;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -29,6 +29,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.control.cell.PropertyValueFactory;
 //>>>>>>> origin/master
 
 
@@ -154,7 +155,7 @@ public class SceneController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        sd= new SongDaoImp();
+        sd= new SongDaoImpl();
         updatefilterInterpret();
         updatefilterAlbum();
         updatefilterYear();
@@ -165,7 +166,16 @@ public class SceneController implements Initializable {
         filterAlbum.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectAlbum() );
         filterGenre.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectGenre() );
         filterYear.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectYear() );
+        
+       //  name.setCellValueFactory(new PropertyValueFactory<, String>("id"));
+       // UserName.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
+        //Active.setCellValueFactory(new PropertyValueFactory<User, String>("active"));
+
+      //  tableView.getItems().setAll(vyplNazev());
     }
+    // vyplNazev(){
+        
+   // }
 
     /**
      * Method of updating filter of Interprets.

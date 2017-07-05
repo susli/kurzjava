@@ -25,26 +25,16 @@ public class Song {
 	 * @param length String variable for length of song. 
 	 */
 	public Song(String name, String interpret, String album, int songNumber, int year, String genre, String length) {
-		super();
 		this.name = name;
-		this.interpret = interpret == null ? "NaN" : interpret;
-		this.album = album == null ? "NaN" : album;
+		this.interpret = interpret;
+		this.album = album;
 		this.songNumber = songNumber;
 		this.year = year;
-		this.genre = genre == null ? "NaN" : genre;
-		this.length = length == null ? "NaN" : length;
+		this.genre = genre;
+		this.length = length;
 	}
-
-	public Song() {
-		super();
-		this.name = "name";
-		this.interpret = "interpret";
-		this.album = "album";
-		this.songNumber = 0;
-		this.year = 1970;
-		this.genre = "genre";
-		this.length = "length";
-	}
+	
+	public Song() {}
 
 	/**
 	 * Method to return name of song.
@@ -108,20 +98,62 @@ public class Song {
 	public String getLength() {
 		return length;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((album == null) ? 0 : album.hashCode());
+		result = prime * result + ((genre == null) ? 0 : genre.hashCode());
+		result = prime * result + ((interpret == null) ? 0 : interpret.hashCode());
+		result = prime * result + ((length == null) ? 0 : length.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + songNumber;
+		result = prime * result + year;
+		return result;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
-		if (!(obj instanceof Song)) return false;
-		if (obj == this) return true;
-		Song objSong = (Song) obj;
-		if (!this.name.equals(objSong.name)) return false;
-		if (!this.album.equals(objSong.album)) return false;
-		if (!this.genre.equals(objSong.genre)) return false;
-		if (!this.interpret.equals(objSong.interpret)) return false;
-		if (!this.length.equals(objSong.length)) return false;
-		if (this.year != objSong.year) return false;
-		if (this.songNumber != objSong.songNumber) return false;
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Song other = (Song) obj;
+		if (album == null) {
+			if (other.album != null)
+				return false;
+		} else if (!album.equals(other.album))
+			return false;
+		if (genre == null) {
+			if (other.genre != null)
+				return false;
+		} else if (!genre.equals(other.genre))
+			return false;
+		if (interpret == null) {
+			if (other.interpret != null)
+				return false;
+		} else if (!interpret.equals(other.interpret))
+			return false;
+		if (length == null) {
+			if (other.length != null)
+				return false;
+		} else if (!length.equals(other.length))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (songNumber != other.songNumber)
+			return false;
+		if (year != other.year)
+			return false;
 		return true;
 	}
+	
+	
 
 }

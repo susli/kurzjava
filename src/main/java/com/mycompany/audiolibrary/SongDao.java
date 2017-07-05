@@ -35,7 +35,7 @@ public interface SongDao {
 	/**
 	 * 
 	 * @param year Searched year
-	 * @return List of Songs with the chosen year. Never Null.
+	 * @return Sorted List of Songs with the chosen year. Never Null.
 	 */
 	List<Song> findByYear(int year);
 	/**
@@ -47,7 +47,7 @@ public interface SongDao {
 	 * 
 	 * @return List of Strings all years. Never Null.
 	 */
-	List<Integer> getYears();
+	List<String> getYears(); 
 	/**
 	 * 
 	 * @return List of Strings all albums. Never Null.

@@ -87,6 +87,9 @@ public class SceneController implements Initializable {
 
 	@FXML // fx:id="tableView"
 	private TableView<?> tableView; // Value injected by FXMLLoader
+        
+        @FXML // fx:id="clearSearch"
+        private Button clearSearch; // Value injected by FXMLLoader
 
 	@FXML // This method is called by the FXMLLoader when initialization is complete
 	void initialize() {
@@ -106,6 +109,7 @@ public class SceneController implements Initializable {
 		assert searchBox != null : "fx:id=\"searchBox\" was not injected: check your FXML file 'Scene.fxml'.";
 		assert filterGenre != null : "fx:id=\"filterGenre\" was not injected: check your FXML file 'Scene.fxml'.";
 		assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'Scene.fxml'.";
+                assert clearSearch != null : "fx:id=\"clearSearch\" was not injected: check your FXML file 'Scene.fxml'.";
 
 	}
 
@@ -267,21 +271,5 @@ public class SceneController implements Initializable {
 		}
 	}
 
-	/**
-	 * public static <T,U> void refreshTableView(final TableView<T> tableView, final
-	 * List<TableColumn<T,U>> columns, final List<T> rows) {
-	 * 
-	 * tableView.getColumns().clear(); tableView.getColumns().addAll(columns);
-	 * 
-	 * ObservableList<T> list = FXCollections.observableArrayList(rows);
-	 * tableView.setItems(list); } /
-	 * 
-	 * /** void refreshTable() { final List<Item> items = tableView.getItems(); if(
-	 * items == null || items.size() == 0) return;
-	 * 
-	 * final Item item = tableView.getItems().get(0); items.remove(0);
-	 * Platform.runLater(new Runnable(){
-	 * 
-	 * @Override public void run() { items.add(0, item); } }); }
-	 */
+	
 }

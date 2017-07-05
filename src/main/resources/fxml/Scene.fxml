@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.media.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -40,6 +41,8 @@
             <ChoiceBox id="Frok" fx:id="filterYear" layoutX="10.0" layoutY="66.0" prefWidth="150.0" />
             <Label text="Žánr" />
             <ChoiceBox id="Fzanr" fx:id="filterGenre" layoutX="10.0" layoutY="105.0" prefWidth="150.0" />
+            <Separator prefHeight="24.0" prefWidth="100.0" />
+            <Button fx:id="clearSearch" mnemonicParsing="false" text="vyhledej vše" />
             <Accordion />
             <HBox prefHeight="100.0" prefWidth="200.0" />
          </children>

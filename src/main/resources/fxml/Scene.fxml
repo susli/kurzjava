@@ -37,10 +37,10 @@
             </ToolBar>
             <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
                <columns>
-                  <TableColumn id="Dskladba" fx:id="trackNumber" minWidth="65.0" prefWidth="65.0" text="Skladba Č." />
                   <TableColumn id="Dnazev" fx:id="name" minWidth="45.0" prefWidth="100.0" text="Název" />
                   <TableColumn id="Dinterpret" fx:id="interpret" minWidth="60.0" prefWidth="100.0" text="Interpret" />
                   <TableColumn id="Dalbum" fx:id="album" minWidth="50.0" text="Album" />
+                  <TableColumn id="Dskladba" fx:id="trackNumber" minWidth="65.0" prefWidth="65.0" text="Skladba Č." />
                   <TableColumn id="Drok" fx:id="year" minWidth="40.0" prefWidth="40.0" resizable="false" text="Rok" />
                   <TableColumn id="Dzanr" fx:id="genre" minWidth="40.0" prefWidth="90.0" text="Žánr" />
                   <TableColumn id="delka" fx:id="length" minWidth="50.0" prefWidth="55.0" resizable="false" text="Délka" />

@@ -25,6 +25,7 @@ public class SongDaoImpl implements SongDao{
 	for (int i = 0; i < 20; i++) {
 		songs.add(new Song("song"+i, "já 1", "Moje boží album", i+1, 2017, "rock", "00:00"));	
 		}
+
 		songs.add(new Song("BABYMETAL - ギミチョコ！！-", "オフィシャルサイト", "Toy's Factory", 12, 2015, "k-metal", "6:12"));
 		songs.add(new Song("نيويورك", "القاعدة", "سبتمبر", 7, 2001, "explosiv metal", "2:12"));
 		songs.add(new Song("Россия", "Путин", "свобода", 2, 2012, "techno", "36:16"));

@@ -29,6 +29,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.control.cell.PropertyValueFactory;
 //>>>>>>> origin/master
 
 
@@ -165,7 +166,16 @@ public class SceneController implements Initializable {
         filterAlbum.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectAlbum() );
         filterGenre.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectGenre() );
         filterYear.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectYear() );
+        
+       //  name.setCellValueFactory(new PropertyValueFactory<, String>("id"));
+       // UserName.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
+        //Active.setCellValueFactory(new PropertyValueFactory<User, String>("active"));
+
+      //  tableView.getItems().setAll(vyplNazev());
     }
+    // vyplNazev(){
+        
+   // }
 
     /**
      * Method of updating filter of Interprets.

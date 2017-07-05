@@ -1,35 +1,23 @@
 //package com.mycompany.audiolibrary;
 package com.mycompany.audiolibrary;
 
-import com.mycompany.audiolibrary.Song;
-import com.mycompany.audiolibrary.SongDao;
-import com.mycompany.audiolibrary.SongDaoImpl;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.stage.FileChooser;
-import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.cell.PropertyValueFactory;
-//>>>>>>> origin/master
 
 public class SceneController implements Initializable {
 
+    //Create an instance to get tracks
     private SongDao sd;
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -98,6 +86,9 @@ public class SceneController implements Initializable {
         assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'Scene.fxml'.";
     }
 
+    /**
+     * Methods following the action in the graphical interface
+     */
     @FXML
     void handleSearchButton(ActionEvent event) {
         ObservableList data = FXCollections.observableArrayList(sd.findByName(searchBox.getText()));
@@ -107,7 +98,7 @@ public class SceneController implements Initializable {
         filterYear.setValue(null);
         filterGenre.setValue(null);
     }
-
+    
     /**
      * Method to initialize options at startup
      */

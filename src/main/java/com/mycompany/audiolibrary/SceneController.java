@@ -106,16 +106,6 @@ public class SceneController implements Initializable {
 		filterYear.setValue(null);
 		filterGenre.setValue(null);
 	}
-    
-	@FXML
-	void handleDeleteItem(ActionEvent event) {
-		System.out.println("DeleteItem");
-	}
-
-	@FXML
-	void handleSearchBox(ActionEvent event) {
-		System.out.println("SearchBox");
-	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -126,8 +116,7 @@ public class SceneController implements Initializable {
 		updatefilterGenre();
 
 		// Listeners for selection changes of choicebox
-		filterInterpret.getSelectionModel().selectedItemProperty()
-				.addListener((v, oldValue, newValue) -> selectInterpret());
+		filterInterpret.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> selectInterpret());
 		filterAlbum.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> selectAlbum());
 		filterGenre.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> selectGenre());
 		filterYear.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> selectYear());
@@ -141,8 +130,7 @@ public class SceneController implements Initializable {
 		genre.setCellValueFactory(new PropertyValueFactory<Song, String>("genre"));
 		
 		ObservableList data=FXCollections.observableArrayList(
-				sd.findAll()
-				);
+				sd.findAll());
 		tableView.setItems(data);
 	}
 
@@ -181,12 +169,9 @@ public class SceneController implements Initializable {
 	/**
 	 * Method of select Interpret for filter output
 	 */
-
-	void selectInterpret() {
+        void selectInterpret() {
 		if (filterInterpret.getValue() != null)	{	
-		ObservableList data=FXCollections.observableArrayList(
-				sd.findByInterpret(filterInterpret.getValue().toString())
-				);
+		ObservableList data=FXCollections.observableArrayList(sd.findByInterpret(filterInterpret.getValue().toString()));
 		tableView.setItems(data);
 		filterAlbum.setValue(null);
 		filterYear.setValue(null);
@@ -213,9 +198,7 @@ public class SceneController implements Initializable {
 	 */
 	private void selectYear() {
 		if (filterYear.getValue() != null)	{	
-		ObservableList data=FXCollections.observableArrayList(
-				sd.findByYear(Integer.valueOf(filterYear.getValue().toString()))
-				);
+		ObservableList data=FXCollections.observableArrayList(sd.findByYear(Integer.valueOf(filterYear.getValue().toString())));
 		tableView.setItems(data);
 		filterInterpret.setValue(null);
 		filterAlbum.setValue(null);

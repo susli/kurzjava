@@ -2,6 +2,7 @@ import com.mycompany.audiolibrary.Song;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by stepanmudra on 04.07.17.
@@ -36,6 +37,19 @@ public class TestSong {
     @Test
     public void testGetLength(){
         assertEquals("3:52", song.getLength());
+    }
+    @Test
+    public void testEquals(){
+        Song song = new Song("IDK", "Nikoto", "Assembly", 12, 2014, "pop", "3:13");
+        Song song1 = new Song("IDK", "Nikoto", "Assembly", 12, 2014, "pop", "3:13");
+        Song song2 = new Song("Lálův song", "Franta Lála", "Lálovi Láloviny", 5, 2017, "rock", "3:13");
+        assertTrue(song.equals(song));
+        assertTrue(song.equals(song1));
+        assertTrue(!song.equals(song2));
+        assertTrue(song1.equals(song));
+        assertTrue(song1.equals(song1));
+        assertTrue(!song1.equals(song2));
+        assertTrue(song2.equals(song2));
     }
 
 }

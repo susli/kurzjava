@@ -82,7 +82,7 @@ public class SongDaoImp implements SongDao{
 			if (!(pomStrings.contains(songs.getInterpret())))
 				pomStrings.add(songs.getInterpret());
 		}
-		return pomStrings;
+		return pomStrings; 
 	}
 
 	@Override

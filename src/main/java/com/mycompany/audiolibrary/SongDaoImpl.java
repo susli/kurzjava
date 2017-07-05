@@ -18,7 +18,7 @@ public class SongDaoImpl implements SongDao{
 		songs.add(new Song("Jako", "Kura", "Makeš", 2, 2012, "rock", "5:40"));
 		songs.add(new Song("IDK", "Mezinkoš", "Makeš", 3, 2017, "rock", "4:13"));
 		songs.add(new Song("Neruš", "basket", "kRál", 1, 1999, "pop", "4:11"));
-		songs.add(new Song("Never", "Mezinkoš", "Makeš", 3, 2017, "rock", "4:13"));
+		songs.add(new Song("Never", "Mezinkoš", "Makeš", 3, 2017, "rock", "4:13")); 
 	}
 	
 	@Override

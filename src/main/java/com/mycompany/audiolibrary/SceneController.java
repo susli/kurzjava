@@ -107,8 +107,12 @@ public class SceneController implements Initializable {
 
 	@FXML
 	void handleSearchButton(ActionEvent event) {
-		System.out.println("Hledej");
-
+		ObservableList data = FXCollections.observableArrayList(sd.findByName(searchBox.getText()));
+		tableView.setItems(data);
+		filterAlbum.setValue(null);
+		filterInterpret.setValue(null);
+		filterYear.setValue(null);
+		filterGenre.setValue(null);
 	}
     
 

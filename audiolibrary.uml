@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.mycompany.audiolibrary</OriginalElement>
+  <nodes>
+    <node x="0.0" y="232.0">com.mycompany.audiolibrary.MainApp</node>
+    <node x="59.88888888888889" y="79.0">com.mycompany.audiolibrary.SongDaoImpl</node>
+    <node x="0.0" y="0.0">com.mycompany.audiolibrary.SongDao</node>
+    <node x="51.611111111111114" y="158.0">com.mycompany.audiolibrary.SceneController</node>
+    <node x="124.0" y="0.0">com.mycompany.audiolibrary.Song</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.mycompany.audiolibrary.SongDaoImpl" target="com.mycompany.audiolibrary.Song">
+      <point x="0.0" y="-14.5" />
+      <point x="124.38888888888889" y="54.0" />
+      <point x="137.33333333333331" y="54.0" />
+      <point x="-26.666666666666686" y="14.5" />
+    </edge>
+    <edge source="com.mycompany.audiolibrary.SongDaoImpl" target="com.mycompany.audiolibrary.SongDao">
+      <point x="-43.0" y="-14.5" />
+      <point x="81.38888888888889" y="54.0" />
+      <point x="78.0" y="54.0" />
+      <point x="26.0" y="14.5" />
+    </edge>
+    <edge source="com.mycompany.audiolibrary.SceneController" target="com.mycompany.audiolibrary.SongDaoImpl">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.mycompany.audiolibrary.SceneController" target="com.mycompany.audiolibrary.SongDao">
+      <point x="-48.66666666666666" y="-14.5" />
+      <point x="75.94444444444446" y="133.0" />
+      <point x="25.999999999999986" y="133.0" />
+      <point x="-26.0" y="14.5" />
+    </edge>
+    <edge source="com.mycompany.audiolibrary.SceneController" target="com.mycompany.audiolibrary.Song">
+      <point x="48.666666666666686" y="-14.5" />
+      <point x="173.2777777777778" y="133.0" />
+      <point x="199.38888888888889" y="133.0" />
+      <point x="199.38888888888889" y="54.0" />
+      <point x="190.66666666666669" y="54.0" />
+      <point x="26.666666666666686" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.032092939180033" x="143.50953829230474" y="171.67215986323203" />
+  <SelectedNodes>
+    <node>com.mycompany.audiolibrary.MainApp</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

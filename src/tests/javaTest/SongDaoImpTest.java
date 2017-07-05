@@ -115,12 +115,12 @@ public class SongDaoImpTest{
         List<String> years = songDao.getYears();
 
         assertEquals("1999", years.get(0));
-        assertEquals("2015", years.get(3));
-        assertEquals("2014", years.get(2));
+        assertEquals("2015", years.get(4));
+        assertEquals("2014", years.get(3));
         assertEquals("1999", years.get(0));
-        assertEquals("2017", years.get(4));
-        assertEquals("2012", years.get(1));
-        assertEquals("2017", years.get(4));
+        assertEquals("2017", years.get(5));
+        assertEquals("2012", years.get(2));
+        assertEquals("2017", years.get(5));
     }
 
     @Test

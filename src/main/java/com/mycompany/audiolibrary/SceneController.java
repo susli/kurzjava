@@ -32,238 +32,236 @@ import java.util.ResourceBundle;
 import javafx.scene.control.cell.PropertyValueFactory;
 //>>>>>>> origin/master
 
-
 public class SceneController implements Initializable {
 	private SongDao sd;
-    @FXML // ResourceBundle that was given to the FXMLLoader
-    private ResourceBundle resources;
+	@FXML // ResourceBundle that was given to the FXMLLoader
+	private ResourceBundle resources;
 
-    @FXML // URL location of the FXML file that was given to the FXMLLoader
-    private URL location;
+	@FXML // URL location of the FXML file that was given to the FXMLLoader
+	private URL location;
 
-    @FXML // fx:id="removeItem"
-    private MenuItem removeItem; // Value injected by FXMLLoader
+	@FXML // fx:id="removeItem"
+	private MenuItem removeItem; // Value injected by FXMLLoader
 
-    @FXML // fx:id="searchButton"
-    private Button searchButton; // Value injected by FXMLLoader
+	@FXML // fx:id="searchButton"
+	private Button searchButton; // Value injected by FXMLLoader
 
-    @FXML // fx:id="trackNumber"
-    private TableColumn<?, ?> trackNumber; // Value injected by FXMLLoader
+	@FXML // fx:id="trackNumber"
+	private TableColumn<Song, String> trackNumber; // Value injected by FXMLLoader
 
-    @FXML // fx:id="year"
-    private TableColumn<?, ?> year; // Value injected by FXMLLoader
+	@FXML // fx:id="year"
+	private TableColumn<Song, String> year; // Value injected by FXMLLoader
 
-    @FXML // fx:id="filterYear"
-    private ChoiceBox<?> filterYear; // Value injected by FXMLLoader
+	@FXML // fx:id="filterYear"
+	private ChoiceBox<?> filterYear; // Value injected by FXMLLoader
 
-    @FXML // fx:id="album"
-    private TableColumn<?, ?> album; // Value injected by FXMLLoader
-    
-    @FXML // fx:id="filterGenre"
-    private ChoiceBox<?> filterGenre; // Value injected by FXMLLoader
+	@FXML // fx:id="album"
+	private TableColumn<Song, String> album; // Value injected by FXMLLoader
 
-    @FXML // fx:id="length"
-    private TableColumn<?, ?> length; // Value injected by FXMLLoader
+	@FXML // fx:id="filterGenre"
+	private ChoiceBox<?> filterGenre; // Value injected by FXMLLoader
 
-    @FXML // fx:id="filterInterpret"
-    private ChoiceBox<?> filterInterpret; // Value injected by FXMLLoader
+	@FXML // fx:id="length"
+	private TableColumn<Song, String> length; // Value injected by FXMLLoader
 
-    @FXML // fx:id="interpret"
-    private TableColumn<?, ?> interpret; // Value injected by FXMLLoader
+	@FXML // fx:id="filterInterpret"
+	private ChoiceBox<?> filterInterpret; // Value injected by FXMLLoader
 
-    @FXML // fx:id="name"
-    private TableColumn<?, ?> name; // Value injected by FXMLLoader
+	@FXML // fx:id="interpret"
+	private TableColumn<Song, String> interpret; // Value injected by FXMLLoader
 
-    @FXML // fx:id="genre"
-    private TableColumn<?, ?> genre; // Value injected by FXMLLoader
+	@FXML // fx:id="name"
+	private TableColumn<Song, String> name; // Value injected by FXMLLoader
 
-    @FXML // fx:id="filterAlbum"
-    private ChoiceBox<?> filterAlbum; // Value injected by FXMLLoader
+	@FXML // fx:id="genre"
+	private TableColumn<Song, String> genre; // Value injected by FXMLLoader
 
-    @FXML // fx:id="selectFile"
-    private MenuItem selectFile; // Value injected by FXMLLoader
+	@FXML // fx:id="filterAlbum"
+	private ChoiceBox<?> filterAlbum; // Value injected by FXMLLoader
 
-    @FXML // fx:id="searchBox"
-    private TextField searchBox; // Value injected by FXMLLoader
-    
-    @FXML // fx:id="tableView"
-    private TableView<?> tableView; // Value injected by FXMLLoader
-    
-    
-    
-    
+	@FXML // fx:id="selectFile"
+	private MenuItem selectFile; // Value injected by FXMLLoader
 
-    @FXML // This method is called by the FXMLLoader when initialization is complete
-    void initialize() {
-        assert removeItem != null : "fx:id=\"removeItem\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert searchButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert trackNumber != null : "fx:id=\"trackNumber\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert year != null : "fx:id=\"year\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert filterYear != null : "fx:id=\"filterYear\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert album != null : "fx:id=\"album\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert length != null : "fx:id=\"length\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert filterInterpret != null : "fx:id=\"filterInterpret\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert interpret != null : "fx:id=\"interpret\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert name != null : "fx:id=\"name\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert genre != null : "fx:id=\"genre\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert filterAlbum != null : "fx:id=\"filterAlbum\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert selectFile != null : "fx:id=\"selectFile\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert searchBox != null : "fx:id=\"searchBox\" was not injected: check your FXML file 'Scene.fxml'.";
-        assert filterGenre != null : "fx:id=\"filterGenre\" was not injected: check your FXML file 'Scene.fxml'.";
-         assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'Scene.fxml'.";
+	@FXML // fx:id="searchBox"
+	private TextField searchBox; // Value injected by FXMLLoader
 
-    }
-    
-    @FXML
-    void handleSearchButton(ActionEvent event) {
-        System.out.println("Hledej");
-       
-    }
-    
-    @FXML
-    private void handleSelectFile(ActionEvent event) throws MalformedURLException {
-        System.out.println("SelectFile");
-        FileChooser fc = new FileChooser();
-        fc.setTitle("Choose audio file");
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("mp3", "*.mp3"));
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("wav", "*.wav"));
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("ALL Files", "*.*"));
+	@FXML // fx:id="tableView"
+	private TableView<?> tableView; // Value injected by FXMLLoader
 
-        File workingDirectory = new File(System.getProperty("user.dir")); // aktuální složka programu
-        fc.setInitialDirectory(workingDirectory);
+	@FXML // This method is called by the FXMLLoader when initialization is complete
+	void initialize() {
+		assert removeItem != null : "fx:id=\"removeItem\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert searchButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert trackNumber != null : "fx:id=\"trackNumber\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert year != null : "fx:id=\"year\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert filterYear != null : "fx:id=\"filterYear\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert album != null : "fx:id=\"album\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert length != null : "fx:id=\"length\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert filterInterpret != null : "fx:id=\"filterInterpret\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert interpret != null : "fx:id=\"interpret\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert name != null : "fx:id=\"name\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert genre != null : "fx:id=\"genre\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert filterAlbum != null : "fx:id=\"filterAlbum\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert selectFile != null : "fx:id=\"selectFile\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert searchBox != null : "fx:id=\"searchBox\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert filterGenre != null : "fx:id=\"filterGenre\" was not injected: check your FXML file 'Scene.fxml'.";
+		assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'Scene.fxml'.";
 
-        List<File> files = fc.showOpenMultipleDialog(null);
+	}
 
-        if (files == null) {
-            return;
+	@FXML
+	void handleSearchButton(ActionEvent event) {
+		System.out.println("Hledej");
 
-        }  
-    }
-    
-    @FXML
-    void handleDeleteItem(ActionEvent event){
-        System.out.println("DeleteItem");
-    }
-    
-    @FXML
-    void handleSearchBox(ActionEvent event){
-        System.out.println("SearchBox");
-    }
-    
-    
-    
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        sd= new SongDaoImpl();
-        updatefilterInterpret();
-        updatefilterAlbum();
-        updatefilterYear();
-        updatefilterGenre();
-        
-        //Listeners for selection changes of choicebox
-        filterInterpret.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectInterpret() );
-        filterAlbum.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectAlbum() );
-        filterGenre.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectGenre() );
-        filterYear.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> selectYear() );
-        
-       //  name.setCellValueFactory(new PropertyValueFactory<, String>("id"));
-       // UserName.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
-        //Active.setCellValueFactory(new PropertyValueFactory<User, String>("active"));
+	}
 
-      //  tableView.getItems().setAll(vyplNazev());
-    }
-    // vyplNazev(){
-        
-   // }
+	@FXML
+	private void handleSelectFile(ActionEvent event) throws MalformedURLException {
+		System.out.println("SelectFile");
+		FileChooser fc = new FileChooser();
+		fc.setTitle("Choose audio file");
+		fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("mp3", "*.mp3"));
+		fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("wav", "*.wav"));
+		fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("ALL Files", "*.*"));
 
-    /**
-     * Method of updating filter of Interprets.
-     */
-    private void updatefilterInterpret() {
-    	filterInterpret.getItems().clear();
-    	filterInterpret.setItems((ObservableList)FXCollections.observableList(sd.getInterprets()));
-    }
+		File workingDirectory = new File(System.getProperty("user.dir")); // aktuální složka programu
+		fc.setInitialDirectory(workingDirectory);
 
-    /**
-     * Method of updating filter of Albums.
-     */
-    private void updatefilterAlbum() {
-    	filterAlbum.getItems().clear();
-    	filterAlbum.setItems((ObservableList)FXCollections.observableList(sd.getAlbums()));
-    }
+		List<File> files = fc.showOpenMultipleDialog(null);
 
-    /**
-     * Method of updating filter of years.
-     */
-    private void updatefilterYear() {
-    	filterYear.getItems().clear();
-    	filterYear.setItems((ObservableList)FXCollections.observableList(sd.getYears()));
-    }
+		if (files == null) {
+			return;
 
-    
-    /**
-     * Method of updating filter of genres.
-     */
-    private void updatefilterGenre() {
-    	filterGenre.getItems().clear();
-    	filterGenre.setItems((ObservableList)FXCollections.observableList(sd.getGenres()));
-    }
-    
-    /**
-     * Method of select Interpret for filter output 
-     */
-    
-    void selectInterpret(){
-        System.out.println("selectInterpret");
-    }
-    
-    /**
-     * Method of select Album for filter output 
-     */
-    private void selectAlbum(){
-        System.out.println("selectAlbum");
-    }
-    
-    /**
-     * Method of select Year for filter output 
-     */
-    private void selectYear(){
-        System.out.println("selectYear");
-    }
-    
-    /**
-     * Method of select Genre for filter output 
-     */
-    private void selectGenre(){
-        System.out.println("selectGenre");
-    }
-    
-    
-    /**
-    public static <T,U> void refreshTableView(final TableView<T> tableView, final List<TableColumn<T,U>> columns, final List<T> rows) {
+		}
+	}
 
-    tableView.getColumns().clear();
-    tableView.getColumns().addAll(columns);
+	@FXML
+	void handleDeleteItem(ActionEvent event) {
+		System.out.println("DeleteItem");
+	}
 
-    ObservableList<T> list = FXCollections.observableArrayList(rows);
-    tableView.setItems(list);
-}
-* /
-    
-    /**
-    void refreshTable() {
-    final List<Item> items = tableView.getItems();
-    if( items == null || items.size() == 0) return;
+	@FXML
+	void handleSearchBox(ActionEvent event) {
+		System.out.println("SearchBox");
+	}
 
-    final Item item = tableView.getItems().get(0);
-    items.remove(0);
-    Platform.runLater(new Runnable(){
-        @Override
-        public void run() {
-            items.add(0, item);
-        }
-    });
- }
-    */
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		sd = new SongDaoImpl();
+		updatefilterInterpret();
+		updatefilterAlbum();
+		updatefilterYear();
+		updatefilterGenre();
+
+		// Listeners for selection changes of choicebox
+		filterInterpret.getSelectionModel().selectedItemProperty()
+				.addListener((v, oldValue, newValue) -> selectInterpret());
+		filterAlbum.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> selectAlbum());
+		filterGenre.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> selectGenre());
+		filterYear.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> selectYear());
+
+		trackNumber.setCellValueFactory(new PropertyValueFactory<Song, String>("songNumber"));
+		year.setCellValueFactory(new PropertyValueFactory<Song, String>("year"));
+		album.setCellValueFactory(new PropertyValueFactory<Song, String>("album"));
+		length.setCellValueFactory(new PropertyValueFactory<Song, String>("length"));
+		interpret.setCellValueFactory(new PropertyValueFactory<Song, String>("interpret"));
+		name.setCellValueFactory(new PropertyValueFactory<Song, String>("name"));
+		genre.setCellValueFactory(new PropertyValueFactory<Song, String>("genre"));
+		
+		ObservableList data=FXCollections.observableArrayList(
+				sd.findAll()
+				);
+		tableView.setItems(data);
+	}
+
+	/**
+	 * Method of updating filter of Interprets.
+	 */
+	private void updatefilterInterpret() {
+		filterInterpret.getItems().clear();
+		filterInterpret.setItems((ObservableList) FXCollections.observableList(sd.getInterprets()));
+	}
+
+	/**
+	 * Method of updating filter of Albums.
+	 */
+	private void updatefilterAlbum() {
+		filterAlbum.getItems().clear();
+		filterAlbum.setItems((ObservableList) FXCollections.observableList(sd.getAlbums()));
+	}
+
+	/**
+	 * Method of updating filter of years.
+	 */
+	private void updatefilterYear() {
+		filterYear.getItems().clear();
+		filterYear.setItems((ObservableList) FXCollections.observableList(sd.getYears()));
+	}
+
+	/**
+	 * Method of updating filter of genres.
+	 */
+	private void updatefilterGenre() {
+		filterGenre.getItems().clear();
+		filterGenre.setItems((ObservableList) FXCollections.observableList(sd.getGenres()));
+	}
+
+	/**
+	 * Method of select Interpret for filter output
+	 */
+
+	void selectInterpret() {
+		ObservableList data=FXCollections.observableArrayList(
+				sd.findByInterpret(filterInterpret.getValue().toString())
+				);
+		tableView.setItems(data);
+	}
+
+	/**
+	 * Method of select Album for filter output
+	 */
+	private void selectAlbum() {
+		ObservableList data=FXCollections.observableArrayList(
+				sd.findByAlbum(filterAlbum.getValue().toString())
+				);
+		tableView.setItems(data);
+	}
+
+	/**
+	 * Method of select Year for filter output
+	 */
+	private void selectYear() {
+		ObservableList data=FXCollections.observableArrayList(
+				sd.findByYear(Integer.valueOf(filterYear.getValue().toString()))
+				);
+		tableView.setItems(data);
+	}
+
+	/**
+	 * Method of select Genre for filter output
+	 */
+	private void selectGenre() {
+		ObservableList data=FXCollections.observableArrayList(
+				sd.findByGenre(filterGenre.getValue().toString())
+				);
+		tableView.setItems(data);
+	}
+
+	/**
+	 * public static <T,U> void refreshTableView(final TableView<T> tableView, final
+	 * List<TableColumn<T,U>> columns, final List<T> rows) {
+	 * 
+	 * tableView.getColumns().clear(); tableView.getColumns().addAll(columns);
+	 * 
+	 * ObservableList<T> list = FXCollections.observableArrayList(rows);
+	 * tableView.setItems(list); } /
+	 * 
+	 * /** void refreshTable() { final List<Item> items = tableView.getItems(); if(
+	 * items == null || items.size() == 0) return;
+	 * 
+	 * final Item item = tableView.getItems().get(0); items.remove(0);
+	 * Platform.runLater(new Runnable(){
+	 * 
+	 * @Override public void run() { items.add(0, item); } }); }
+	 */
 }

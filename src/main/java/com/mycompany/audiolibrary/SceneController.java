@@ -87,10 +87,7 @@ public class SceneController implements Initializable {
 
 	@FXML // fx:id="tableView"
 	private TableView<?> tableView; // Value injected by FXMLLoader
-        
-        @FXML // fx:id="clearSearch"
-        private Button clearSearch; // Value injected by FXMLLoader
-
+       
 	@FXML // This method is called by the FXMLLoader when initialization is complete
 	void initialize() {
 		assert removeItem != null : "fx:id=\"removeItem\" was not injected: check your FXML file 'Scene.fxml'.";
@@ -109,7 +106,6 @@ public class SceneController implements Initializable {
 		assert searchBox != null : "fx:id=\"searchBox\" was not injected: check your FXML file 'Scene.fxml'.";
 		assert filterGenre != null : "fx:id=\"filterGenre\" was not injected: check your FXML file 'Scene.fxml'.";
 		assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'Scene.fxml'.";
-                assert clearSearch != null : "fx:id=\"clearSearch\" was not injected: check your FXML file 'Scene.fxml'.";
 
 	}
 
@@ -118,6 +114,7 @@ public class SceneController implements Initializable {
 		System.out.println("Hledej");
 
 	}
+    
 
 	@FXML
 	private void handleSelectFile(ActionEvent event) throws MalformedURLException {

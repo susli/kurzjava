@@ -4,7 +4,6 @@ package com.mycompany.audiolibrary;
 import com.mycompany.audiolibrary.Song;
 import com.mycompany.audiolibrary.SongDao;
 import com.mycompany.audiolibrary.SongDaoImpl;
-
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,7 +14,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-//<<<<<<< HEAD
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -24,9 +22,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
-//=======
 import javafx.scene.control.*;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,6 +30,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class SceneController implements Initializable {
 	private SongDao sd;
+        
 	@FXML // ResourceBundle that was given to the FXMLLoader
 	private ResourceBundle resources;
 
@@ -76,9 +73,6 @@ public class SceneController implements Initializable {
 	@FXML // fx:id="filterAlbum"
 	private ChoiceBox<?> filterAlbum; // Value injected by FXMLLoader
 
-	@FXML // fx:id="selectFile"
-	private MenuItem selectFile; // Value injected by FXMLLoader
-
 	@FXML // fx:id="searchBox"
 	private TextField searchBox; // Value injected by FXMLLoader
 
@@ -98,11 +92,9 @@ public class SceneController implements Initializable {
 		assert name != null : "fx:id=\"name\" was not injected: check your FXML file 'Scene.fxml'.";
 		assert genre != null : "fx:id=\"genre\" was not injected: check your FXML file 'Scene.fxml'.";
 		assert filterAlbum != null : "fx:id=\"filterAlbum\" was not injected: check your FXML file 'Scene.fxml'.";
-		assert selectFile != null : "fx:id=\"selectFile\" was not injected: check your FXML file 'Scene.fxml'.";
 		assert searchBox != null : "fx:id=\"searchBox\" was not injected: check your FXML file 'Scene.fxml'.";
 		assert filterGenre != null : "fx:id=\"filterGenre\" was not injected: check your FXML file 'Scene.fxml'.";
 		assert tableView != null : "fx:id=\"tableView\" was not injected: check your FXML file 'Scene.fxml'.";
-
 	}
 
 	@FXML
@@ -115,27 +107,6 @@ public class SceneController implements Initializable {
 		filterGenre.setValue(null);
 	}
     
-
-	@FXML
-	private void handleSelectFile(ActionEvent event) throws MalformedURLException {
-		System.out.println("SelectFile");
-		FileChooser fc = new FileChooser();
-		fc.setTitle("Choose audio file");
-		fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("mp3", "*.mp3"));
-		fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("wav", "*.wav"));
-		fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("ALL Files", "*.*"));
-
-		File workingDirectory = new File(System.getProperty("user.dir")); // aktuální složka programu
-		fc.setInitialDirectory(workingDirectory);
-
-		List<File> files = fc.showOpenMultipleDialog(null);
-
-		if (files == null) {
-			return;
-
-		}
-	}
-
 	@FXML
 	void handleDeleteItem(ActionEvent event) {
 		System.out.println("DeleteItem");

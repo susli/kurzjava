@@ -30,8 +30,6 @@ public class MainApp extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("text");
-        System.out.println(MainApp.class.getClass().getResource("/fxml/Scene.fxml"));
         launch(args);
     }
 

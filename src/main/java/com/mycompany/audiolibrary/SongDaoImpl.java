@@ -22,7 +22,7 @@ public class SongDaoImpl implements SongDao{
 		songs.add(new Song("Koktejl", "Bunda", "Molez", 1, 2015, "rap", "6:24")); 
 		songs.add(new Song("Hruza", "aDěs", "Makeš", 3, 2017, "rock", "7:31"));
 		songs.add(new Song("Tento text má strašlivě dlouhý důvod ke své existenci, ale to je na jiné povídaní. Chcete ho slyšet? Tak tedy dobře... Slyšte slyšte - přichází Mistr Bard. Byl nebyl jeden svět, kde existoval mír, ale nebyl to jen takový mír... Exitovali toitž roboti. Ti se měli rádi - dokud byly v aréně. Mlátili se a ničili, až hrůza. Ale všichni byly spojeni a tak byl na světě mír. WIN-WIN.", "Mr.Robot", "Robots", 3, 2017, "robotic", "59:55"));
-	}
+	} 
 	
 	@Override
 	public List<Song> findAll() {

@@ -131,7 +131,12 @@ public class SongDaoImpl implements SongDao{
 		return pomStrings;
 	}
 
-	
+	/**
+	 * Compare two String insensitive case. 
+	 * @param src - Source String
+	 * @param what - Comparing String
+	 * @return true - when source String contains comparing String, otherwise false.
+	 */
 	private static boolean containsIgnoreCase(String src, String what) {
 	    final int length = what.length();
 	    if (length == 0)

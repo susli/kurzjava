@@ -80,7 +80,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Soubor">
             <items>
-              <MenuItem fx:id="openFile" mnemonicParsing="false" text="Otevřít" />
+              <MenuItem mnemonicParsing="false" text="Otevřít" />
             </items>
           </Menu>
         </menus>

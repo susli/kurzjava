@@ -19,8 +19,7 @@ import org.jaudiotagger.tag.TagException;
 public class SongDaoImpl implements SongDao {
 
 	private List<Song> songs;
-	private File srcDirectory = new File(
-			"src" + File.separator + "main" + File.separator + "resources" + File.separator + "files");
+	private File srcDirectory = new File(System.getProperty("user.home") + "Files");
 
 	public SongDaoImpl() {
 		init();
@@ -32,6 +31,7 @@ public class SongDaoImpl implements SongDao {
 	private void init() {
 		songs = new ArrayList<>();
 		File[] files = srcDirectory.listFiles();
+		if (files!=null)
 		for (File file : files) {
 			AudioFile f;
 			AudioHeader ah;

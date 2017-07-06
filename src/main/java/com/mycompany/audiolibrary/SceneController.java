@@ -7,26 +7,17 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.TableColumn.CellEditEvent;
-
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.DirectoryChooser;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.io.File;
 import java.net.MalformedURLException;
-import java.util.List;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-import javafx.util.converter.IntegerStringConverter;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class SceneController implements Initializable {
 

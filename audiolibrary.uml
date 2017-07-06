@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.mycompany.audiolibrary</OriginalElement>
+  <nodes>
+    <node x="0.0" y="242.0">com.mycompany.audiolibrary.MainApp</node>
+    <node x="10.5" y="89.0">com.mycompany.audiolibrary.SongDaoMock</node>
+    <node x="167.5" y="89.0">com.mycompany.audiolibrary.SongDaoImpl</node>
+    <node x="229.3095238095238" y="0.0">com.mycompany.audiolibrary.SongDao</node>
+    <node x="71.64285714285714" y="168.0">com.mycompany.audiolibrary.SceneController</node>
+    <node x="39.0" y="0.0">com.mycompany.audiolibrary.Song</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.mycompany.audiolibrary.SongDaoImpl" target="com.mycompany.audiolibrary.Song">
+      <point x="-43.0" y="-14.5" />
+      <point x="189.0" y="59.0" />
+      <point x="95.0" y="59.0" />
+      <point x="16.0" y="14.5" />
+    </edge>
+    <edge source="com.mycompany.audiolibrary.SongDaoMock" target="com.mycompany.audiolibrary.Song">
+      <point x="-45.66666666666666" y="-14.5" />
+      <point x="33.33333333333334" y="69.0" />
+      <point x="63.0" y="69.0" />
+      <point x="-16.0" y="14.5" />
+    </edge>
+    <edge source="com.mycompany.audiolibrary.SongDaoImpl" target="com.mycompany.audiolibrary.SongDao">
+      <point x="43.0" y="-14.5" />
+      <point x="275.0" y="69.0" />
+      <point x="281.3095238095238" y="69.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.mycompany.audiolibrary.SceneController" target="com.mycompany.audiolibrary.SongDaoImpl">
+      <point x="18.25" y="-14.5" />
+      <point x="162.89285714285714" y="138.0" />
+      <point x="232.0" y="138.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.mycompany.audiolibrary.SceneController" target="com.mycompany.audiolibrary.SongDao">
+      <point x="54.75" y="-14.5" />
+      <point x="199.39285714285714" y="148.0" />
+      <point x="315.46428571428567" y="148.0" />
+      <point x="34.666666666666686" y="14.5" />
+    </edge>
+    <edge source="com.mycompany.audiolibrary.SongDaoMock" target="com.mycompany.audiolibrary.SongDao">
+      <point x="45.66666666666666" y="-14.5" />
+      <point x="124.66666666666666" y="69.0" />
+      <point x="246.64285714285714" y="69.0" />
+      <point x="-34.66666666666666" y="14.5" />
+    </edge>
+    <edge source="com.mycompany.audiolibrary.SceneController" target="com.mycompany.audiolibrary.Song">
+      <point x="-54.75" y="-14.5" />
+      <point x="89.89285714285714" y="148.0" />
+      <point x="0.0" y="148.0" />
+      <point x="0.0" y="59.0" />
+      <point x="47.0" y="59.0" />
+      <point x="-32.0" y="14.5" />
+    </edge>
+    <edge source="com.mycompany.audiolibrary.SceneController" target="com.mycompany.audiolibrary.SongDaoMock">
+      <point x="-18.25" y="-14.5" />
+      <point x="126.39285714285714" y="138.0" />
+      <point x="79.0" y="138.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="167.0" y="135.5" />
+  <SelectedNodes>
+    <node>com.mycompany.audiolibrary.MainApp</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

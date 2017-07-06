@@ -49,7 +49,8 @@ public class SongDaoImpl implements SongDao {
                                 ? tag.getFirst(FieldKey.YEAR)
                                 : "0"),
                         tag.getFirst(FieldKey.GENRE), 
-                        	convertSecondIntoTimeFormat(Integer.valueOf(ah.getTrackLength()))));
+                        	convertSecondIntoTimeFormat(Integer.valueOf(ah.getTrackLength())), 
+                        file.getName()));
 
             } catch (CannotReadException | IOException | TagException | ReadOnlyFileException | InvalidAudioFrameException e) {
                 e.printStackTrace();
@@ -260,8 +261,15 @@ public class SongDaoImpl implements SongDao {
     }
     
 	@Override
-	public void setSong(Song s, int index) {
-		songs.set(index, s);
+	public void setSong(Song s) {
+		int i = 0;
+		for (Song song : songs) {
+			if (s.getPath().equals(song.getPath()))
+				break;
+			else
+				i++;
+		}
+		songs.set(i, s);
 		saveFile(s);
 	}
     

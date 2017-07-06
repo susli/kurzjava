@@ -13,6 +13,7 @@ public class Song {
 	private int year;
 	private String genre;
 	private String length;
+	private String path;
 
 	/**
 	 * Constructor of song.
@@ -31,8 +32,10 @@ public class Song {
 	 *            String variable means genders of song.
 	 * @param length
 	 *            String variable for length of song.
+	 * @param path
+	 * 			  String variable for relative path of file.            
 	 */
-	public Song(String name, String interpret, String album, int songNumber, int year, String genre, String length) {
+	public Song(String name, String interpret, String album, int songNumber, int year, String genre, String length, String path) {
 		this.name = name;
 		this.interpret = interpret;
 		this.album = album;
@@ -40,6 +43,7 @@ public class Song {
 		this.year = year;
 		this.genre = genre;
 		this.length = length;
+		this.path = path;
 	}
 
 	public Song() {}
@@ -149,11 +153,11 @@ public class Song {
 		this.genre = genre;
 	}
 	/**
-	 * set length
-	 * @param length new length
+	 * 
+	 * @return relative path of file
 	 */
-	public void setLength(String length) {
-		this.length = length;
+	public String getPath() {
+		return path;
 	}
 
 	@Override
@@ -165,6 +169,7 @@ public class Song {
 		result = prime * result + ((interpret == null) ? 0 : interpret.hashCode());
 		result = prime * result + ((length == null) ? 0 : length.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((path == null) ? 0 : path.hashCode());
 		result = prime * result + songNumber;
 		result = prime * result + year;
 		return result;
@@ -204,11 +209,16 @@ public class Song {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (path == null) {
+			if (other.path != null)
+				return false;
+		} else if (!path.equals(other.path))
+			return false;
 		if (songNumber != other.songNumber)
 			return false;
 		if (year != other.year)
 			return false;
 		return true;
 	}
-
+	
 }

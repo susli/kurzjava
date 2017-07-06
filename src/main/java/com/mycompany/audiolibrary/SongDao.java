@@ -81,8 +81,7 @@ public interface SongDao {
 	/**
 	 * Set/modify song
 	 * @param s new Song
-	 * @param index number of row
 	 */
-	void setSong(Song s, int index);
+	void setSong(Song s);
 	
 }

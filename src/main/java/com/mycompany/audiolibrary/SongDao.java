@@ -74,7 +74,7 @@ public interface SongDao {
 	 */
 	File getSrcDirectory();
 	/**
-	 * Set Directory source file.
+	 * Set directory and reload all files within.
 	 * @param f - new source directory
 	 */
 	void setSrcDirectory(File f);

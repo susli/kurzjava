@@ -250,17 +250,10 @@ public class SongDaoImpl implements SongDao {
         return pomStrings;
     }
 
-    /**
-     * @return source directory
-     */
     public File getSrcDirectory() {
         return srcDirectory;
     }
 
-    /**
-     * Set directory and reload all files within.
-     * @param srcDirectory Source directory
-     */
     public void setSrcDirectory(File srcDirectory) {
         this.srcDirectory = srcDirectory;
         init();

@@ -185,4 +185,9 @@ public class SongDaoMock implements SongDao {
 		return;
 	}
 
+	@Override
+	public void setSong(Song s, int index) {
+		songs.set(index, s);
+	}
+
 }

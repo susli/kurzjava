@@ -56,7 +56,30 @@ public class SongDaoImpl implements SongDao {
             }
         }
     }
-    
+    /**
+     * Save new meta-data into selected file
+     * @param song Modified song
+     * @return return true if all success
+     */
+    private boolean saveFile(Song song) {
+    	AudioFile f;
+        Tag t;
+        File songsFile = new File(srcDirectory, song.getName());
+        try {
+			f = AudioFileIO.read(songsFile);
+			t = f.getTag();
+			t.setField(FieldKey.ARTIST, song.getInterpret());
+			t.setField(FieldKey.ALBUM, song.getAlbum());
+			t.setField(FieldKey.TRACK, String.valueOf(song.getSongNumber()));
+			t.setField(FieldKey.YEAR, String.valueOf(song.getYear()));
+			t.setField(FieldKey.GENRE, song.getGenre());
+        	f.commit();
+        	return true;
+		} catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
     
     /**
      * Change second into HH:MM:SS
@@ -241,5 +264,11 @@ public class SongDaoImpl implements SongDao {
         this.srcDirectory = srcDirectory;
         init();
     }
+    
+	@Override
+	public void setSong(Song s, int index) {
+		songs.set(index, s);
+		saveFile(s);
+	}
     
 }

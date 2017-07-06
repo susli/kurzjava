@@ -78,5 +78,11 @@ public interface SongDao {
 	 * @param f - new source directory
 	 */
 	void setSrcDirectory(File f);
+	/**
+	 * Set/modify song
+	 * @param s new Song
+	 * @param index number of row
+	 */
+	void setSong(Song s, int index);
 	
 }

@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class TestSong {
 
-    Song song = new Song("Run to the hills", "Iron Maiden", "The number of the beast", 5, 1982, "Heavy metal", "3:52");
+    Song song = new Song("Run to the hills", "Iron Maiden", "The number of the beast", 5, 1982, "Heavy metal", "3:52","");
     @Test
     public void testGetName(){
         assertEquals("Run to the hills", song.getName());
@@ -39,10 +39,42 @@ public class TestSong {
         assertEquals("3:52", song.getLength());
     }
     @Test
+    public void testGetPath(){assertEquals("", song.getPath());}
+    @Test
+    public void testSetName(){
+        song.setName("Crazy train");
+        assertEquals("Crazy train", song.getName());
+    }
+    @Test
+    public void testSetInerpret(){
+        song.setInterpret("Ozzy Osbourne");
+        assertEquals("Ozzy Osbourne", song.getInterpret());
+    }
+    @Test
+    public void testSetAlbum(){
+        song.setAlbum("Blizzard of Ozz");
+        assertEquals("Blizzard of Ozz", song.getAlbum());
+    }
+    @Test
+    public void testSetSongNumber(){
+        song.setSongNumber(2);
+        assertEquals(2, song.getSongNumber());
+    }
+    @Test
+    public void testSetYear(){
+        song.setYear(1980);
+        assertEquals(1980, song.getYear());
+    }
+    @Test
+    public void testSetGenre(){
+        song.setGenre("metal");
+        assertEquals("metal", song.getGenre());
+    }
+    @Test
     public void testEquals(){
-        Song song = new Song("IDK", "Nikoto", "Assembly", 12, 2014, "pop", "3:13");
-        Song song1 = new Song("IDK", "Nikoto", "Assembly", 12, 2014, "pop", "3:13");
-        Song song2 = new Song("Lálův song", "Franta Lála", "Lálovi Láloviny", 5, 2017, "rock", "3:13");
+        Song song = new Song("IDK", "Nikoto", "Assembly", 12, 2014, "pop", "3:13","");
+        Song song1 = new Song("IDK", "Nikoto", "Assembly", 12, 2014, "pop", "3:13","");
+        Song song2 = new Song("Lálův song", "Franta Lála", "Lálovi Láloviny", 5, 2017, "rock", "3:13","");
         assertTrue(song.equals(song));
         assertTrue(song.equals(song1));
         assertTrue(!song.equals(song2));

@@ -236,6 +236,7 @@ public class SceneController implements Initializable {
 			sd = new SongDaoImpl();
 			workingDirectory = sd.getSrcDirectory().getParentFile();
 		}
+		    tableView.getItems().clear();
 
 		dc.setInitialDirectory(workingDirectory);
 		workingDirectory = dc.showDialog(null);

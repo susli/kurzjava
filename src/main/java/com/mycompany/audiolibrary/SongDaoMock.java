@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 public class SongDaoMock implements SongDao {
 
 	private List<Song> songs;
-	
+
 	public SongDaoMock() {
 		songs = new ArrayList<>();
 		songs.add(new Song("Motor", "Corko", "Húko", 12, 1999, "speed metal", "12:12", ""));
@@ -37,7 +36,7 @@ public class SongDaoMock implements SongDao {
 		songs.add(new Song("نيويورك", "القاعدة", "سبتمبر", 7, 2001, "explosiv metal", "2:12", ""));
 		songs.add(new Song("Россия", "Путин", "свобода", 2, 2012, "techno", "36:16", ""));
 		songs.add(new Song("Lálův song", "Franta Lála", "Lálovi Láloviny", 5, 2017, "rock", "3:13", ""));
-		}
+	}
 
 	@Override
 	public List<Song> findAll() {
@@ -86,7 +85,7 @@ public class SongDaoMock implements SongDao {
 
 	@Override
 	public List<Song> findByName(String name) {
-		if (name  != null)
+		if (name != null)
 			if (name.equals(""))
 				return songs;
 		List<Song> pomSongs = new ArrayList<>();
@@ -155,7 +154,7 @@ public class SongDaoMock implements SongDao {
 	 *            - Comparing String
 	 * @return true - when source String contains comparing String, otherwise false.
 	 */
-	 private boolean containsIgnoreCase(String src, String what) {
+	private boolean containsIgnoreCase(String src, String what) {
 		final int length = what.length();
 		if (length == 0)
 			return true;

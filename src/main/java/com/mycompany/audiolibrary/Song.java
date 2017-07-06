@@ -23,9 +23,10 @@ public class Song {
 	 * @param interpret
 	 *            String variable which represents song's interpret name.
 	 * @param album
-	 *            String variable which represents name of album from which song came.
+	 *            String variable which represents name of album from which song
+	 *            came.
 	 * @param songNumber
-	 *            Integer variable means number of song in an album. 
+	 *            Integer variable means number of song in an album.
 	 * @param year
 	 *            Integer variable represents year of the song.
 	 * @param genre
@@ -33,9 +34,10 @@ public class Song {
 	 * @param length
 	 *            String variable for length of song.
 	 * @param path
-	 * 			  String variable for relative path of file.            
+	 *            String variable for relative path of file.
 	 */
-	public Song(String name, String interpret, String album, int songNumber, int year, String genre, String length, String path) {
+	public Song(String name, String interpret, String album, int songNumber, int year, String genre, String length,
+			String path) {
 		this.name = name;
 		this.interpret = interpret;
 		this.album = album;
@@ -46,7 +48,8 @@ public class Song {
 		this.path = path;
 	}
 
-	public Song() {}
+	public Song() {
+	}
 
 	/**
 	 * Method to return name of song.
@@ -110,48 +113,67 @@ public class Song {
 	public String getLength() {
 		return length;
 	}
+
 	/**
 	 * Set name
-	 * @param name new name
+	 * 
+	 * @param name
+	 *            new name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
 	 * Set interpret
-	 * @param interpret new interpret
+	 * 
+	 * @param interpret
+	 *            new interpret
 	 */
 	public void setInterpret(String interpret) {
 		this.interpret = interpret;
 	}
+
 	/**
 	 * Set album
-	 * @param album new album
+	 * 
+	 * @param album
+	 *            new album
 	 */
 	public void setAlbum(String album) {
 		this.album = album;
 	}
+
 	/**
 	 * Set song number
-	 * @param songNumber new song number
+	 * 
+	 * @param songNumber
+	 *            new song number
 	 */
 	public void setSongNumber(int songNumber) {
 		this.songNumber = songNumber;
 	}
+
 	/**
 	 * Set year
-	 * @param year new year
+	 * 
+	 * @param year
+	 *            new year
 	 */
 	public void setYear(int year) {
 		this.year = year;
 	}
+
 	/**
 	 * Set genre
-	 * @param genre new genre
+	 * 
+	 * @param genre
+	 *            new genre
 	 */
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
+
 	/**
 	 * 
 	 * @return relative path of file
@@ -220,5 +242,5 @@ public class Song {
 			return false;
 		return true;
 	}
-	
+
 }

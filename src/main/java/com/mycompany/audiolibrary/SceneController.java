@@ -239,8 +239,10 @@ public class SceneController implements Initializable {
 
 		dc.setInitialDirectory(workingDirectory);
 		workingDirectory = dc.showDialog(null);
+		if (dc.getInitialDirectory().equals(workingDirectory)) {
+			tableView.getItems().clear();
+		}
 		if (workingDirectory != null) {
-		    tableView.getItems().clear();
 			sd.setSrcDirectory(workingDirectory);
 			updatefilterInterpret();
 			updatefilterAlbum();

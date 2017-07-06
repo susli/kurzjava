@@ -258,6 +258,7 @@ public class SongDaoImpl implements SongDao {
     }
 
     /**
+     * Set directory and reload all files within.
      * @param srcDirectory Source directory
      */
     public void setSrcDirectory(File srcDirectory) {

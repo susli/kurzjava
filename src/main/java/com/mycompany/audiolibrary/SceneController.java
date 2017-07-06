@@ -15,10 +15,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.cell.PropertyValueFactory;
-import com.mycompany.audiolibrary.SongDaoImplFromFiles;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.List;
+
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 public class SceneController implements Initializable {
@@ -77,9 +78,10 @@ public class SceneController implements Initializable {
     
     @FXML // fx:id="openFile"
     private MenuItem openFile; // Value injected by FXMLLoader
-
+    private File workingDirectory;
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
+    	System.out.println("1");
         assert searchButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file 'Scene.fxml'.";
         assert openFile != null : "fx:id=\"openFile\" was not injected: check your FXML file 'Scene.fxml'.";
         assert trackNumber != null : "fx:id=\"trackNumber\" was not injected: check your FXML file 'Scene.fxml'.";
@@ -115,40 +117,46 @@ public class SceneController implements Initializable {
         handleSearchButton(event);
     }
     
-    /**
+    
     @FXML
      void handleOpenFile(ActionEvent event) throws MalformedURLException {
-        System.out.println("open file");
-        FileChooser fc = new FileChooser();
-        fc.setTitle("Choose audio file");
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("mp3", "*.mp3"));
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("wav", "*.wav"));
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("ALL Files", "*.*"));
-
-        File workingDirectory = new File(System.getProperty("user.dir")); // aktuální složka programu
-        fc.setInitialDirectory(workingDirectory);
-
-        List<File> files = fc.showOpenMultipleDialog(null);
-
-        if (files == null) {
-            return;
-
-        }
+        DirectoryChooser dc = new DirectoryChooser();
+        dc.setTitle("Choose audio file"); 
+        
+        // aktuální složka programu 
+        if(workingDirectory==null) {
+        	sd = new SongDaoImpl();
+        	workingDirectory=sd.getSrcDirectory().getParentFile();
+        } 
+        
+        dc.setInitialDirectory(workingDirectory);
+        workingDirectory = dc.showDialog(null);
+        sd.setSrcDirectory(workingDirectory);
+        
+        updatefilterInterpret();
+        updatefilterAlbum();
+        updatefilterYear();
+        updatefilterGenre();
+        ObservableList data = FXCollections.observableArrayList(sd.findAll());
+        tableView.setItems(data);
+        filterAlbum.setValue(null);
+        filterInterpret.setValue(null);
+        filterYear.setValue(null);
+        filterGenre.setValue(null);
     }
-    */
+    
 
     /**
      * Method to initialize options at startup
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //sd = new SongDaoImpl(); //dummy data
-        sd = new SongDaoImplFromFiles();//ze souborů
+        sd = new SongDaoMock(); //dummy data
         updatefilterInterpret();
         updatefilterAlbum();
         updatefilterYear();
         updatefilterGenre();
-
+        workingDirectory=sd.getSrcDirectory();
         /**
          * Listeners for selection changes of choicebox
          */

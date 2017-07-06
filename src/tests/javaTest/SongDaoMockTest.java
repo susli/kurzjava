@@ -11,11 +11,11 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by stepanmudra on 04.07.17.
  */
-public class SongDaoImpTest{
+public class SongDaoMockTest{
 
     @Test
     public void findAll() throws Exception {
-        SongDao songDao = new SongDaoImpl();
+        SongDao songDao = new SongDaoMock();
         List<Song> songs = songDao.findAll();
         Song song;
 
@@ -46,7 +46,7 @@ public class SongDaoImpTest{
 
     @Test
     public void findByAlbum() throws Exception {
-        SongDao songDao = new SongDaoImpl();
+        SongDao songDao = new SongDaoMock();
         List<Song> songs = songDao.findByAlbum("Húko");
         Song song = new Song("Motor", "Corko", "Húko", 12, 1999, "speed metal", "12:12");
         Song song1 = new Song("Maybe", "Heyja", "Húko", 6, 1999, "speed metal", "4:50");
@@ -57,7 +57,7 @@ public class SongDaoImpTest{
 
     @Test
     public void findByInterpret() throws Exception {
-        SongDao songDao = new SongDaoImpl();
+        SongDao songDao = new SongDaoMock();
         Song song = new Song("Maybe", "Heyja", "Húko", 6, 1999, "speed metal", "4:50");
         Song song1 = new Song("Kdo to ví?", "Kura", "Makeš", 2, 2012, "rock", "5:40");
         List<Song> songs = songDao.findByInterpret("Heyja");
@@ -68,7 +68,7 @@ public class SongDaoImpTest{
 
     @Test
     public void findByGenre() throws Exception {
-        SongDao songDao = new SongDaoImpl();
+        SongDao songDao = new SongDaoMock();
         List<Song> songs = songDao.findByGenre("pop");
         Song song = new Song("Vyprchává", "Nikoto", "Assembly", 12, 2014, "pop", "3:13");
         Song song1 = new Song("Despacito", "Lusi", "WhAt", 3, 2017, "pop", "4:51");
@@ -79,7 +79,7 @@ public class SongDaoImpTest{
 
     @Test
     public void findByYear() throws Exception {
-        SongDao songDao = new SongDaoImpl();
+        SongDao songDao = new SongDaoMock();
         List<Song> songs = songDao.findByYear(2014);
         Song song = new Song("Vyprchává", "Nikoto", "Assembly", 12, 2014, "pop", "3:13");
 
@@ -88,7 +88,7 @@ public class SongDaoImpTest{
 
     @Test
     public void findbyName() throws Exception {
-        SongDao songDao = new SongDaoImpl();
+        SongDao songDao = new SongDaoMock();
         List<Song> songs = songDao.findByName("Maybe");
         Song song = new Song("Maybe", "Heyja", "Húko", 6, 1999, "speed metal", "4:50");
 
@@ -97,7 +97,7 @@ public class SongDaoImpTest{
 
     @Test
     public void getInterprets() throws Exception {
-        SongDao songDao = new SongDaoImpl();
+        SongDao songDao = new SongDaoMock();
         List<String> interprets = songDao.getInterprets();
 
         assertEquals("Corko", interprets.get(0));
@@ -111,7 +111,7 @@ public class SongDaoImpTest{
 
     @Test
     public void getYears() throws Exception {
-        SongDao songDao = new SongDaoImpl();
+        SongDao songDao = new SongDaoMock();
         List<String> years = songDao.getYears();
 
         assertEquals("1999", years.get(0));
@@ -125,7 +125,7 @@ public class SongDaoImpTest{
 
     @Test
     public void getAlbums() throws Exception {
-        SongDao songDao = new SongDaoImpl();
+        SongDao songDao = new SongDaoMock();
         List<String> albums = songDao.getAlbums();
 
         assertEquals("Húko", albums.get(0));
@@ -139,7 +139,7 @@ public class SongDaoImpTest{
 
     @Test
     public void getGenres() throws Exception {
-        SongDao songDao = new SongDaoImpl();
+        SongDao songDao = new SongDaoMock();
         List<String> genres = songDao.getGenres();
 
         assertEquals("speed metal", genres.get(0));

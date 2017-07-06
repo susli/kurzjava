@@ -1,152 +1,86 @@
 package com.mycompany.audiolibrary;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.audio.AudioHeader;
+import org.jaudiotagger.audio.exceptions.CannotReadException;
+import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
+import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.Tag;
+import org.jaudiotagger.tag.TagException;
 
 public class SongDaoImpl implements SongDao {
 
-	private List<Song> songs;
-	
-	public SongDaoImpl() {
-		songs = new ArrayList<>();
-		songs.add(new Song("Motor", "Corko", "Húko", 12, 1999, "speed metal", "12:12"));
-		songs.add(new Song("Netuší", "Lopata", "Ostrava", 12, 2015, "slow metal", "16:33"));
-		songs.add(new Song("Vyprchává", "Nikoto", "Assembly", 12, 2014, "pop", "3:13"));
-		songs.add(new Song("Maybe", "Heyja", "Húko", 6, 1999, "speed metal", "4:50"));
-		songs.add(new Song("Despacito", "Lusi", "WhAt", 3, 2017, "pop", "4:51"));
-		songs.add(new Song("Kdo to ví?", "Kura", "Makeš", 2, 2012, "rock", "5:40"));
-		songs.add(new Song("Posel", "Mezinkoš", "Makeš", 3, 2017, "rock", "4:13"));
-		songs.add(new Song("Neruš", "basket", "kRál", 1, 1999, "k-pop", "4:11"));
-		songs.add(new Song("Never", "Mezinkoš", "Makeš", 3, 2017, "rock", "3:13"));
-		songs.add(new Song("Koktejl", "Bunda", "Molez", 1, 2015, "rap", "6:24"));
-		songs.add(new Song("Hruza", "aDěs", "Makeš", 3, 2017, "rock", "7:31"));
-		songs.add(new Song(
-				"Tento text má strašlivě dlouhý důvod ke své existenci, ale to je na jiné povídaní. Chcete ho slyšet? Tak tedy dobře... Slyšte slyšte - přichází Mistr Bard. Byl nebyl jeden svět, kde existoval mír, ale nebyl to jen takový mír... Exitovali toitž roboti. Ti se měli rádi - dokud byly v aréně. Mlátili se a ničili, až hrůza. Ale všichni byly spojeni a tak byl na světě mír. WIN-WIN.",
-				"Mr.Robot", "Robots", 3, 2017, "robotic", "23:59:55"));
-		for (int i = 0; i < 20; i++) {
-			songs.add(new Song("song" + i, "já 1", "Moje boží album", i + 1, 2017, "rock", "00:00"));
-		}
+    private List<Song> songs;
+    private File srcDirectory = new File(
+            "src" + File.separator + "main" + File.separator + "resources" + File.separator + "files");
+    
+    public SongDaoImpl() {
+        init();
+    }
+    /**
+     * Load files from source, add songs to list.
+     */
+    private void init() {
+    	songs = new ArrayList<>();
+        File[] files = srcDirectory.listFiles();
+        for (File file : files) {
+            AudioFile f;
+            AudioHeader ah;
+            Tag tag;
+            try {
+                f = AudioFileIO.read(file);
+                tag = f.getTag();
+                ah = f.getAudioHeader();
+                
+                songs.add(new Song(file.getName(), tag.getFirst(FieldKey.ARTIST), tag.getFirst(FieldKey.ALBUM),
+                        Integer.valueOf(
+                                (tag.getFirst(FieldKey.TRACK) != null && !tag.getFirst(FieldKey.TRACK).equals(""))
+                                ? tag.getFirst(FieldKey.TRACK)
+                                : "0"),
+                        Integer.valueOf((tag.getFirst(FieldKey.YEAR) != null && !tag.getFirst(FieldKey.YEAR).equals(""))
+                                ? tag.getFirst(FieldKey.YEAR)
+                                : "0"),
+                        tag.getFirst(FieldKey.GENRE), 
+                        	convertSecondIntoTimeFormat(Integer.valueOf(ah.getTrackLength()))));
 
-		for (int i = 0; i < 50; i++) {
-			songs.add(new Song("longsongs", "interpret" + i, "test", 1, 2017, "rock", "00:00"));
-		}
-		songs.add(new Song("BABYMETAL - ギミチョコ！！-", "オフィシャルサイト", "Toy's Factory", 12, 2015, "k-metal", "6:12"));
-		songs.add(new Song("نيويورك", "القاعدة", "سبتمبر", 7, 2001, "explosiv metal", "2:12"));
-		songs.add(new Song("Россия", "Путин", "свобода", 2, 2012, "techno", "36:16"));
-		songs.add(new Song("Lálův song", "Franta Lála", "Lálovi Láloviny", 5, 2017, "rock", "3:13"));
-		}
-
-	@Override
-	public List<Song> findAll() {
-		return songs;
-	}
-
-	@Override
-	public List<Song> findByAlbum(String album) {
-		List<Song> pomSongs = new ArrayList<>();
-		for (Song song : songs) {
-			if (song.getAlbum().equals(album))
-				pomSongs.add(song);
-		}
-		return pomSongs;
-	}
-
-	@Override
-	public List<Song> findByInterpret(String interpret) {
-		List<Song> pomSongs = new ArrayList<>();
-		for (Song song : songs) {
-			if (song.getInterpret().equals(interpret))
-				pomSongs.add(song);
-		}
-		return pomSongs;
-	}
-
-	@Override
-	public List<Song> findByGenre(String genre) {
-		List<Song> pomSongs = new ArrayList<>();
-		for (Song song : songs) {
-			if (song.getGenre().equals(genre))
-				pomSongs.add(song);
-		}
-		return pomSongs;
-	}
-
-	@Override
-	public List<Song> findByYear(int year) {
-		List<Song> pomSongs = new ArrayList<>();
-		for (Song song : songs) {
-			if (song.getYear() == year)
-				pomSongs.add(song);
-		}
-		return pomSongs;
-	}
-
-	@Override
-	public List<Song> findByName(String name) {
-		if (name  != null)
-			if (name.equals(""))
-				return songs;
-		List<Song> pomSongs = new ArrayList<>();
-		for (Song song : songs) {
-			if (containsIgnoreCase(song.getName(), name))
-				pomSongs.add(song);
-		}
-		return pomSongs;
-	}
-
-	@Override
-	public List<String> getInterprets() {
-		List<String> pomStrings = new ArrayList<>();
-		for (Song songs : songs) {
-			if (!(pomStrings.contains(songs.getInterpret())))
-				pomStrings.add(songs.getInterpret());
-		}
-		return pomStrings;
-	}
-
-	@Override
-	public List<String> getYears() {
-		List<Integer> pomStrings = new ArrayList<>();
-		// add
-		for (Song songs : songs) {
-			if (!(pomStrings.contains(songs.getYear())))
-				pomStrings.add(songs.getYear());
-		}
-		// sort
-		Collections.sort(pomStrings);
-		// copy
-		List<String> newPomStrings = new ArrayList<String>(pomStrings.size());
-		for (Integer myInt : pomStrings) {
-			newPomStrings.add(String.valueOf(myInt));
-		}
-		// return
-		return newPomStrings;
-	}
-
-	@Override
-	public List<String> getAlbums() {
-		List<String> pomStrings = new ArrayList<>();
-		for (Song songs : songs) {
-			if (!(pomStrings.contains(songs.getAlbum())))
-				pomStrings.add(songs.getAlbum());
-		}
-		return pomStrings;
-	}
-
-	@Override
-	public List<String> getGenres() {
-		List<String> pomStrings = new ArrayList<>();
-		for (Song songs : songs) {
-			if (!(pomStrings.contains(songs.getGenre())))
-				pomStrings.add(songs.getGenre());
-		}
-		return pomStrings;
-	}
-
-	/**
+            } catch (CannotReadException | IOException | TagException | ReadOnlyFileException | InvalidAudioFrameException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    
+    /**
+     * Change second into HH:MM:SS
+     * @param s - seconds
+     * @return - String in format HH:MM:SS
+     */
+    private String convertSecondIntoTimeFormat(int s) {
+    	int hours = (int) s / 3600;
+        int remainder = (int) s - hours * 3600;
+        int mins = remainder / 60;
+        remainder = remainder - mins * 60;
+        int secs = remainder;
+        String songLength = "";
+        if (hours != 0) {
+            songLength += String.valueOf(hours) + ":";
+        }
+        if (mins != 0) {
+            songLength += String.valueOf(mins) + ":";
+        }
+        songLength += String.valueOf(secs);
+    	return songLength;
+    }
+    
+    /**
 	 * Compare two String insensitive case.
 	 * 
 	 * @param src
@@ -175,14 +109,137 @@ public class SongDaoImpl implements SongDao {
 		return false;
 	}
 
-	@Override
-	public File getSrcDirectory() {
-		return null;
-	}
+    @Override
+    public List<Song> findAll() {
+        return songs;
+    }
 
-	@Override
-	public void setSrcDirectory(File f) {
-		return;
-	}
+    @Override
+    public List<Song> findByAlbum(String album) {
+        List<Song> pomSongs = new ArrayList<>();
+        for (Song song : songs) {
+            if (song.getAlbum().equals(album)) {
+                pomSongs.add(song);
+            }
+        }
+        return pomSongs;
+    }
 
+    @Override
+    public List<Song> findByInterpret(String interpret) {
+        List<Song> pomSongs = new ArrayList<>();
+        for (Song song : songs) {
+            if (song.getInterpret().equals(interpret)) {
+                pomSongs.add(song);
+            }
+        }
+        return pomSongs;
+    }
+
+    @Override
+    public List<Song> findByGenre(String genre) {
+        List<Song> pomSongs = new ArrayList<>();
+        for (Song song : songs) {
+            if (song.getGenre().equals(genre)) {
+                pomSongs.add(song);
+            }
+        }
+        return pomSongs;
+    }
+
+    @Override
+    public List<Song> findByYear(int year) {
+        List<Song> pomSongs = new ArrayList<>();
+        for (Song song : songs) {
+            if (song.getYear() == year) {
+                pomSongs.add(song);
+            }
+        }
+        return pomSongs;
+    }
+
+    @Override
+    public List<Song> findByName(String name) {
+        if (name != null) {
+            if (name.equals("")) {
+                return songs;
+            }
+        }
+        List<Song> pomSongs = new ArrayList<>();
+        for (Song song : songs) {
+            if (containsIgnoreCase(song.getName(), name)) {
+                pomSongs.add(song);
+            }
+        }
+        return pomSongs;
+    }
+
+    @Override
+    public List<String> getInterprets() {
+        List<String> pomStrings = new ArrayList<>();
+        for (Song songs : songs) {
+            if (!(pomStrings.contains(songs.getInterpret()))) {
+                pomStrings.add(songs.getInterpret());
+            }
+        }
+        return pomStrings;
+    }
+
+    @Override
+    public List<String> getYears() {
+        List<Integer> pomStrings = new ArrayList<>();
+        // add
+        for (Song songs : songs) {
+            if (!(pomStrings.contains(songs.getYear()))) {
+                pomStrings.add(songs.getYear());
+            }
+        }
+        // sort
+        Collections.sort(pomStrings);
+        // copy
+        List<String> newPomStrings = new ArrayList<String>(pomStrings.size());
+        for (Integer myInt : pomStrings) {
+            newPomStrings.add(String.valueOf(myInt));
+        }
+        // return
+        return newPomStrings;
+    }
+
+    @Override
+    public List<String> getAlbums() {
+        List<String> pomStrings = new ArrayList<>();
+        for (Song songs : songs) {
+            if (!(pomStrings.contains(songs.getAlbum()))) {
+                pomStrings.add(songs.getAlbum());
+            }
+        }
+        return pomStrings;
+    }
+
+    @Override
+    public List<String> getGenres() {
+        List<String> pomStrings = new ArrayList<>();
+        for (Song songs : songs) {
+            if (!(pomStrings.contains(songs.getGenre()))) {
+                pomStrings.add(songs.getGenre());
+            }
+        }
+        return pomStrings;
+    }
+
+    /**
+     * @return source directory
+     */
+    public File getSrcDirectory() {
+        return srcDirectory;
+    }
+
+    /**
+     * @param srcDirectory Source directory
+     */
+    public void setSrcDirectory(File srcDirectory) {
+        this.srcDirectory = srcDirectory;
+        init();
+    }
+    
 }

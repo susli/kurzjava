@@ -35,8 +35,6 @@ public class SongDaoImplFromFiles implements SongDao {
                 f = AudioFileIO.read(file);
                 tag = f.getTag();
                 ah = f.getAudioHeader();
-
-                String songLenght = convertSecondIntoTimeFormat(Integer.valueOf(ah.getTrackLength()));
                 
                 songs.add(new Song(file.getName(), tag.getFirst(FieldKey.ARTIST), tag.getFirst(FieldKey.ALBUM),
                         Integer.valueOf(
@@ -46,7 +44,8 @@ public class SongDaoImplFromFiles implements SongDao {
                         Integer.valueOf((tag.getFirst(FieldKey.YEAR) != null && !tag.getFirst(FieldKey.YEAR).equals(""))
                                 ? tag.getFirst(FieldKey.YEAR)
                                 : "0"),
-                        tag.getFirst(FieldKey.GENRE), songLenght));
+                        tag.getFirst(FieldKey.GENRE), 
+                        	convertSecondIntoTimeFormat(Integer.valueOf(ah.getTrackLength()))));
 
             } catch (CannotReadException | IOException | TagException | ReadOnlyFileException | InvalidAudioFrameException e) {
                 e.printStackTrace();

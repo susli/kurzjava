@@ -18,55 +18,59 @@ import org.jaudiotagger.tag.TagException;
 
 public class SongDaoImpl implements SongDao {
 
-    private List<Song> songs;
-    private File srcDirectory = new File(
-            "src" + File.separator + "main" + File.separator + "resources" + File.separator + "files");
-    
-    public SongDaoImpl() {
-        init();
-    }
-    /**
-     * Load files from source, add songs to list.
-     */
-    private void init() {
-    	songs = new ArrayList<>();
-        File[] files = srcDirectory.listFiles();
-        for (File file : files) {
-            AudioFile f;
-            AudioHeader ah;
-            Tag tag;
-            try {
-                f = AudioFileIO.read(file);
-                tag = f.getTag();
-                ah = f.getAudioHeader();
-                
-                songs.add(new Song(file.getName(), tag.getFirst(FieldKey.ARTIST), tag.getFirst(FieldKey.ALBUM),
-                        Integer.valueOf(
-                                (tag.getFirst(FieldKey.TRACK) != null && !tag.getFirst(FieldKey.TRACK).equals(""))
-                                ? tag.getFirst(FieldKey.TRACK)
-                                : "0"),
-                        Integer.valueOf((tag.getFirst(FieldKey.YEAR) != null && !tag.getFirst(FieldKey.YEAR).equals(""))
-                                ? tag.getFirst(FieldKey.YEAR)
-                                : "0"),
-                        tag.getFirst(FieldKey.GENRE), 
-                        	convertSecondIntoTimeFormat(Integer.valueOf(ah.getTrackLength())), 
-                        file.getName()));
+	private List<Song> songs;
+	private File srcDirectory = new File(
+			"src" + File.separator + "main" + File.separator + "resources" + File.separator + "files");
 
-            } catch (CannotReadException | IOException | TagException | ReadOnlyFileException | InvalidAudioFrameException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    /**
-     * Save new meta-data into selected file
-     * @param song Modified song
-     * @return return true if all success
-     */
-    private boolean saveFile(Song song) {
-    	AudioFile f;
-        Tag t;
-        File songsFile = new File(srcDirectory, song.getName());
-        try {
+	public SongDaoImpl() {
+		init();
+	}
+
+	/**
+	 * Load files from source, add songs to list.
+	 */
+	private void init() {
+		songs = new ArrayList<>();
+		File[] files = srcDirectory.listFiles();
+		for (File file : files) {
+			AudioFile f;
+			AudioHeader ah;
+			Tag tag;
+			try {
+				f = AudioFileIO.read(file);
+				tag = f.getTag();
+				ah = f.getAudioHeader();
+
+				songs.add(new Song(file.getName(), tag.getFirst(FieldKey.ARTIST), tag.getFirst(FieldKey.ALBUM),
+						Integer.valueOf(
+								(tag.getFirst(FieldKey.TRACK) != null && !tag.getFirst(FieldKey.TRACK).equals(""))
+										? tag.getFirst(FieldKey.TRACK)
+										: "0"),
+						Integer.valueOf((tag.getFirst(FieldKey.YEAR) != null && !tag.getFirst(FieldKey.YEAR).equals(""))
+								? tag.getFirst(FieldKey.YEAR)
+								: "0"),
+						tag.getFirst(FieldKey.GENRE), convertSecondIntoTimeFormat(Integer.valueOf(ah.getTrackLength())),
+						file.getName()));
+
+			} catch (CannotReadException | IOException | TagException | ReadOnlyFileException
+					| InvalidAudioFrameException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * Save new meta-data into selected file
+	 * 
+	 * @param song
+	 *            Modified song
+	 * @return return true if all success
+	 */
+	private boolean saveFile(Song song) {
+		AudioFile f;
+		Tag t;
+		File songsFile = new File(srcDirectory, song.getName());
+		try {
 			f = AudioFileIO.read(songsFile);
 			t = f.getTag();
 			t.setField(FieldKey.ARTIST, song.getInterpret());
@@ -74,37 +78,39 @@ public class SongDaoImpl implements SongDao {
 			t.setField(FieldKey.TRACK, String.valueOf(song.getSongNumber()));
 			t.setField(FieldKey.YEAR, String.valueOf(song.getYear()));
 			t.setField(FieldKey.GENRE, song.getGenre());
-        	f.commit();
-        	return true;
+			f.commit();
+			return true;
 		} catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-    
-    /**
-     * Change second into HH:MM:SS
-     * @param s - seconds
-     * @return - String in format HH:MM:SS
-     */
-    private String convertSecondIntoTimeFormat(int s) {
-    	int hours = (int) s / 3600;
-        int remainder = (int) s - hours * 3600;
-        int mins = remainder / 60;
-        remainder = remainder - mins * 60;
-        int secs = remainder;
-        String songLength = "";
-        if (hours != 0) {
-            songLength += String.valueOf(hours) + ":";
-        }
-        if (mins != 0) {
-            songLength += String.valueOf(mins) + ":";
-        }
-        songLength += String.valueOf(secs);
-    	return songLength;
-    }
-    
-    /**
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	/**
+	 * Change second into HH:MM:SS
+	 * 
+	 * @param s
+	 *            - seconds
+	 * @return - String in format HH:MM:SS
+	 */
+	private String convertSecondIntoTimeFormat(int s) {
+		int hours = (int) s / 3600;
+		int remainder = (int) s - hours * 3600;
+		int mins = remainder / 60;
+		remainder = remainder - mins * 60;
+		int secs = remainder;
+		String songLength = "";
+		if (hours != 0) {
+			songLength += String.valueOf(hours) + ":";
+		}
+		if (mins != 0) {
+			songLength += String.valueOf(mins) + ":";
+		}
+		songLength += String.valueOf(secs);
+		return songLength;
+	}
+
+	/**
 	 * Compare two String insensitive case.
 	 * 
 	 * @param src
@@ -113,7 +119,7 @@ public class SongDaoImpl implements SongDao {
 	 *            - Comparing String
 	 * @return true - when source String contains comparing String, otherwise false.
 	 */
-	 private boolean containsIgnoreCase(String src, String what) {
+	private boolean containsIgnoreCase(String src, String what) {
 		final int length = what.length();
 		if (length == 0)
 			return true;
@@ -133,133 +139,133 @@ public class SongDaoImpl implements SongDao {
 		return false;
 	}
 
-    @Override
-    public List<Song> findAll() {
-        return songs;
-    }
+	@Override
+	public List<Song> findAll() {
+		return songs;
+	}
 
-    @Override
-    public List<Song> findByAlbum(String album) {
-        List<Song> pomSongs = new ArrayList<>();
-        for (Song song : songs) {
-            if (song.getAlbum().equals(album)) {
-                pomSongs.add(song);
-            }
-        }
-        return pomSongs;
-    }
+	@Override
+	public List<Song> findByAlbum(String album) {
+		List<Song> pomSongs = new ArrayList<>();
+		for (Song song : songs) {
+			if (song.getAlbum().equals(album)) {
+				pomSongs.add(song);
+			}
+		}
+		return pomSongs;
+	}
 
-    @Override
-    public List<Song> findByInterpret(String interpret) {
-        List<Song> pomSongs = new ArrayList<>();
-        for (Song song : songs) {
-            if (song.getInterpret().equals(interpret)) {
-                pomSongs.add(song);
-            }
-        }
-        return pomSongs;
-    }
+	@Override
+	public List<Song> findByInterpret(String interpret) {
+		List<Song> pomSongs = new ArrayList<>();
+		for (Song song : songs) {
+			if (song.getInterpret().equals(interpret)) {
+				pomSongs.add(song);
+			}
+		}
+		return pomSongs;
+	}
 
-    @Override
-    public List<Song> findByGenre(String genre) {
-        List<Song> pomSongs = new ArrayList<>();
-        for (Song song : songs) {
-            if (song.getGenre().equals(genre)) {
-                pomSongs.add(song);
-            }
-        }
-        return pomSongs;
-    }
+	@Override
+	public List<Song> findByGenre(String genre) {
+		List<Song> pomSongs = new ArrayList<>();
+		for (Song song : songs) {
+			if (song.getGenre().equals(genre)) {
+				pomSongs.add(song);
+			}
+		}
+		return pomSongs;
+	}
 
-    @Override
-    public List<Song> findByYear(int year) {
-        List<Song> pomSongs = new ArrayList<>();
-        for (Song song : songs) {
-            if (song.getYear() == year) {
-                pomSongs.add(song);
-            }
-        }
-        return pomSongs;
-    }
+	@Override
+	public List<Song> findByYear(int year) {
+		List<Song> pomSongs = new ArrayList<>();
+		for (Song song : songs) {
+			if (song.getYear() == year) {
+				pomSongs.add(song);
+			}
+		}
+		return pomSongs;
+	}
 
-    @Override
-    public List<Song> findByName(String name) {
-        if (name != null) {
-            if (name.equals("")) {
-                return songs;
-            }
-        }
-        List<Song> pomSongs = new ArrayList<>();
-        for (Song song : songs) {
-            if (containsIgnoreCase(song.getName(), name)) {
-                pomSongs.add(song);
-            }
-        }
-        return pomSongs;
-    }
+	@Override
+	public List<Song> findByName(String name) {
+		if (name != null) {
+			if (name.equals("")) {
+				return songs;
+			}
+		}
+		List<Song> pomSongs = new ArrayList<>();
+		for (Song song : songs) {
+			if (containsIgnoreCase(song.getName(), name)) {
+				pomSongs.add(song);
+			}
+		}
+		return pomSongs;
+	}
 
-    @Override
-    public List<String> getInterprets() {
-        List<String> pomStrings = new ArrayList<>();
-        for (Song songs : songs) {
-            if (!(pomStrings.contains(songs.getInterpret()))) {
-                pomStrings.add(songs.getInterpret());
-            }
-        }
-        return pomStrings;
-    }
+	@Override
+	public List<String> getInterprets() {
+		List<String> pomStrings = new ArrayList<>();
+		for (Song songs : songs) {
+			if (!(pomStrings.contains(songs.getInterpret()))) {
+				pomStrings.add(songs.getInterpret());
+			}
+		}
+		return pomStrings;
+	}
 
-    @Override
-    public List<String> getYears() {
-        List<Integer> pomStrings = new ArrayList<>();
-        // add
-        for (Song songs : songs) {
-            if (!(pomStrings.contains(songs.getYear()))) {
-                pomStrings.add(songs.getYear());
-            }
-        }
-        // sort
-        Collections.sort(pomStrings);
-        // copy
-        List<String> newPomStrings = new ArrayList<String>(pomStrings.size());
-        for (Integer myInt : pomStrings) {
-            newPomStrings.add(String.valueOf(myInt));
-        }
-        // return
-        return newPomStrings;
-    }
+	@Override
+	public List<String> getYears() {
+		List<Integer> pomStrings = new ArrayList<>();
+		// add
+		for (Song songs : songs) {
+			if (!(pomStrings.contains(songs.getYear()))) {
+				pomStrings.add(songs.getYear());
+			}
+		}
+		// sort
+		Collections.sort(pomStrings);
+		// copy
+		List<String> newPomStrings = new ArrayList<String>(pomStrings.size());
+		for (Integer myInt : pomStrings) {
+			newPomStrings.add(String.valueOf(myInt));
+		}
+		// return
+		return newPomStrings;
+	}
 
-    @Override
-    public List<String> getAlbums() {
-        List<String> pomStrings = new ArrayList<>();
-        for (Song songs : songs) {
-            if (!(pomStrings.contains(songs.getAlbum()))) {
-                pomStrings.add(songs.getAlbum());
-            }
-        }
-        return pomStrings;
-    }
+	@Override
+	public List<String> getAlbums() {
+		List<String> pomStrings = new ArrayList<>();
+		for (Song songs : songs) {
+			if (!(pomStrings.contains(songs.getAlbum()))) {
+				pomStrings.add(songs.getAlbum());
+			}
+		}
+		return pomStrings;
+	}
 
-    @Override
-    public List<String> getGenres() {
-        List<String> pomStrings = new ArrayList<>();
-        for (Song songs : songs) {
-            if (!(pomStrings.contains(songs.getGenre()))) {
-                pomStrings.add(songs.getGenre());
-            }
-        }
-        return pomStrings;
-    }
+	@Override
+	public List<String> getGenres() {
+		List<String> pomStrings = new ArrayList<>();
+		for (Song songs : songs) {
+			if (!(pomStrings.contains(songs.getGenre()))) {
+				pomStrings.add(songs.getGenre());
+			}
+		}
+		return pomStrings;
+	}
 
-    public File getSrcDirectory() {
-        return srcDirectory;
-    }
+	public File getSrcDirectory() {
+		return srcDirectory;
+	}
 
-    public void setSrcDirectory(File srcDirectory) {
-        this.srcDirectory = srcDirectory;
-        init();
-    }
-    
+	public void setSrcDirectory(File srcDirectory) {
+		this.srcDirectory = srcDirectory;
+		init();
+	}
+
 	@Override
 	public void setSong(Song s) {
 		int i = 0;
@@ -272,5 +278,5 @@ public class SongDaoImpl implements SongDao {
 		songs.set(i, s);
 		saveFile(s);
 	}
-    
+
 }

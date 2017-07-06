@@ -106,6 +106,55 @@ public class Song {
 	public String getLength() {
 		return length;
 	}
+	/**
+	 * Set name
+	 * @param name new name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	/**
+	 * Set interpret
+	 * @param interpret new interpret
+	 */
+	public void setInterpret(String interpret) {
+		this.interpret = interpret;
+	}
+	/**
+	 * Set album
+	 * @param album new album
+	 */
+	public void setAlbum(String album) {
+		this.album = album;
+	}
+	/**
+	 * Set song number
+	 * @param songNumber new song number
+	 */
+	public void setSongNumber(int songNumber) {
+		this.songNumber = songNumber;
+	}
+	/**
+	 * Set year
+	 * @param year new year
+	 */
+	public void setYear(int year) {
+		this.year = year;
+	}
+	/**
+	 * Set genre
+	 * @param genre new genre
+	 */
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+	/**
+	 * set length
+	 * @param length new length
+	 */
+	public void setLength(String length) {
+		this.length = length;
+	}
 
 	@Override
 	public int hashCode() {

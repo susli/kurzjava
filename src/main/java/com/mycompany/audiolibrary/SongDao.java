@@ -1,5 +1,6 @@
 package com.mycompany.audiolibrary;
 
+import java.io.File;
 import java.util.List;
 
 public interface SongDao {
@@ -67,5 +68,15 @@ public interface SongDao {
 	 * @return List of Strings all genres. Never Null.
 	 */
 	List<String> getGenres();
+	/**
+	 * 
+	 * @return Source Directory with sounds files.
+	 */
+	File getSrcDirectory();
+	/**
+	 * Set Directory source file.
+	 * @param f - new source directory
+	 */
+	void setSrcDirectory(File f);
 	
 }

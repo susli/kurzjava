@@ -21,31 +21,12 @@ import org.jaudiotagger.tag.TagException;
 public class SongDaoImplFromFiles implements SongDao {
 
     private List<Song> songs;
-
-    //      System.out.println("open file");
-    FileChooser fc = new FileChooser();
-    //  fc.setTitle("Choose audio file");
-
     private File srcDirectory = new File(
             "src" + File.separator + "main" + File.separator + "resources" + File.separator + "files");
-
-    //private File srcDirectory = new File(System.getProperty("user.dir")); // aktuální složka programu
-    //List<File> files = fc.showOpenMultipleDialog(null);
+    
     public SongDaoImplFromFiles() {
-
-        // File srcDirectory = new File(System.getProperty("user.dir")); // aktuální složka programu
-        fc.setInitialDirectory(srcDirectory);
-
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("mp3", "*.mp3"));
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("wav", "*.wav"));
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("ALL Files", "*.*"));
-
-        //List<File> filess = fc.showOpenMultipleDialog(null);
         songs = new ArrayList<>();
-        List<File> files = fc.showOpenMultipleDialog(null);
-        if (files == null) {
-            return;
-        }
+        File[] files = srcDirectory.listFiles();
         for (File file : files) {
             AudioFile f;
             AudioHeader ah;
@@ -55,21 +36,8 @@ public class SongDaoImplFromFiles implements SongDao {
                 tag = f.getTag();
                 ah = f.getAudioHeader();
 
-                int songLengthint = Integer.valueOf(ah.getTrackLength());
-                int hours = (int) songLengthint / 3600;
-                int remainder = (int) songLengthint - hours * 3600;
-                int mins = remainder / 60;
-                remainder = remainder - mins * 60;
-                int secs = remainder;
-                String songLength = "";
-                if (hours != 0) {
-                    songLength += String.valueOf(hours) + ":";
-                }
-                if (mins != 0) {
-                    songLength += String.valueOf(mins) + ":";
-                }
-                songLength += String.valueOf(secs);
-
+                String songLenght = convertSecondIntoTimeFormat(Integer.valueOf(ah.getTrackLength()));
+                
                 songs.add(new Song(file.getName(), tag.getFirst(FieldKey.ARTIST), tag.getFirst(FieldKey.ALBUM),
                         Integer.valueOf(
                                 (tag.getFirst(FieldKey.TRACK) != null && !tag.getFirst(FieldKey.TRACK).equals(""))
@@ -78,12 +46,33 @@ public class SongDaoImplFromFiles implements SongDao {
                         Integer.valueOf((tag.getFirst(FieldKey.YEAR) != null && !tag.getFirst(FieldKey.YEAR).equals(""))
                                 ? tag.getFirst(FieldKey.YEAR)
                                 : "0"),
-                        tag.getFirst(FieldKey.GENRE), songLength));
+                        tag.getFirst(FieldKey.GENRE), songLenght));
 
             } catch (CannotReadException | IOException | TagException | ReadOnlyFileException | InvalidAudioFrameException e) {
                 e.printStackTrace();
             }
         }
+    }
+    /**
+     * Change second into HH:MM:SS
+     * @param s - seconds
+     * @return - String in format HH:MM:SS
+     */
+    private String convertSecondIntoTimeFormat(int s) {
+    	int hours = (int) s / 3600;
+        int remainder = (int) s - hours * 3600;
+        int mins = remainder / 60;
+        remainder = remainder - mins * 60;
+        int secs = remainder;
+        String songLength = "";
+        if (hours != 0) {
+            songLength += String.valueOf(hours) + ":";
+        }
+        if (mins != 0) {
+            songLength += String.valueOf(mins) + ":";
+        }
+        songLength += String.valueOf(secs);
+    	return songLength;
     }
 
     @Override
@@ -144,7 +133,7 @@ public class SongDaoImplFromFiles implements SongDao {
         }
         List<Song> pomSongs = new ArrayList<>();
         for (Song song : songs) {
-            if (SongDaoImpl.containsIgnoreCase(song.getName(), name)) {
+            if (containsIgnoreCase(song.getName(), name)) {
                 pomSongs.add(song);
             }
         }
@@ -217,4 +206,33 @@ public class SongDaoImplFromFiles implements SongDao {
     public void setSrcDirectory(File srcDirectory) {
         this.srcDirectory = srcDirectory;
     }
+    
+    /**
+	 * Compare two String insensitive case.
+	 * 
+	 * @param src
+	 *            - Source String
+	 * @param what
+	 *            - Comparing String
+	 * @return true - when source String contains comparing String, otherwise false.
+	 */
+	 private boolean containsIgnoreCase(String src, String what) {
+		final int length = what.length();
+		if (length == 0)
+			return true;
+
+		final char firstLo = Character.toLowerCase(what.charAt(0));
+		final char firstUp = Character.toUpperCase(what.charAt(0));
+
+		for (int i = src.length() - length; i >= 0; i--) {
+			final char ch = src.charAt(i);
+			if (ch != firstLo && ch != firstUp)
+				continue;
+
+			if (src.regionMatches(true, i, what, 0, length))
+				return true;
+		}
+
+		return false;
+	}
 }

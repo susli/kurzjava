@@ -9,7 +9,6 @@ import java.util.List;
 public class SongDaoImpl implements SongDao {
 
 	private List<Song> songs;
-	private File srcDirectory = new File ("files"); // DEFAULT
 	
 	public SongDaoImpl() {
 		songs = new ArrayList<>();
@@ -92,7 +91,7 @@ public class SongDaoImpl implements SongDao {
 				return songs;
 		List<Song> pomSongs = new ArrayList<>();
 		for (Song song : songs) {
-			if (SongDaoImpl.containsIgnoreCase(song.getName(), name))
+			if (containsIgnoreCase(song.getName(), name))
 				pomSongs.add(song);
 		}
 		return pomSongs;
@@ -146,18 +145,6 @@ public class SongDaoImpl implements SongDao {
 		}
 		return pomStrings;
 	}
-	/**
-	 * @return source directory
-	 */
-	public File getSrcDirectory() {
-		return srcDirectory;
-	}
-	/**
-	 * @param srcDirectory Source directory
-	 */
-	public void setSrcDirectory(File srcDirectory) {
-		this.srcDirectory = srcDirectory;
-	}
 
 	/**
 	 * Compare two String insensitive case.
@@ -168,7 +155,7 @@ public class SongDaoImpl implements SongDao {
 	 *            - Comparing String
 	 * @return true - when source String contains comparing String, otherwise false.
 	 */
-	static boolean containsIgnoreCase(String src, String what) {
+	 private boolean containsIgnoreCase(String src, String what) {
 		final int length = what.length();
 		if (length == 0)
 			return true;
@@ -186,6 +173,16 @@ public class SongDaoImpl implements SongDao {
 		}
 
 		return false;
+	}
+
+	@Override
+	public File getSrcDirectory() {
+		return null;
+	}
+
+	@Override
+	public void setSrcDirectory(File f) {
+		return;
 	}
 
 }

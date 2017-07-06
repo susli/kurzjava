@@ -67,6 +67,10 @@ public class SongDaoImpl implements SongDao {
 	 * @return return true if all success
 	 */
 	private boolean saveFile(Song song) {
+		if (song.getPath().equals(""))
+			return false;
+		if (song.getName().equals(""))
+			return false;
 		AudioFile f;
 		Tag t;
 		File songsFile = new File(srcDirectory, song.getPath());
@@ -79,7 +83,9 @@ public class SongDaoImpl implements SongDao {
 			t.setField(FieldKey.YEAR, String.valueOf(song.getYear()));
 			t.setField(FieldKey.GENRE, song.getGenre());
 			f.commit();
-			songsFile.renameTo(new File(srcDirectory, song.getPath()));
+			File ff = new File(srcDirectory, song.getName());
+			if (songsFile.renameTo(ff))
+				System.out.println("Uloženo v: " + ff.getAbsolutePath());
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

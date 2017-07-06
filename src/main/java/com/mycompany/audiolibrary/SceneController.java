@@ -32,7 +32,7 @@ public class SceneController implements Initializable {
 
 	// Create an instance to get tracks
 	private SongDao sd;
-
+	private DirectoryChooser dc;
 	@FXML // ResourceBundle that was given to the FXMLLoader
 	private ResourceBundle resources;
 
@@ -116,6 +116,8 @@ public class SceneController implements Initializable {
 		updatefilterYear();
 		updatefilterGenre();
 		workingDirectory = sd.getSrcDirectory();
+		dc = new DirectoryChooser();
+		dc.setInitialDirectory(workingDirectory);
 		/**
 		 * Listeners for selection changes of choicebox
 		 */
@@ -228,7 +230,6 @@ public class SceneController implements Initializable {
 
 	@FXML
 	void handleOpenFile(ActionEvent event) throws MalformedURLException {
-		DirectoryChooser dc = new DirectoryChooser();
 		dc.setTitle("Choose audio file");
 
 		// aktuální složka programu
@@ -237,24 +238,25 @@ public class SceneController implements Initializable {
 			workingDirectory = sd.getSrcDirectory().getParentFile();
 		}
 
-		dc.setInitialDirectory(workingDirectory);
+
 		workingDirectory = dc.showDialog(null);
-		if (dc.getInitialDirectory().equals(workingDirectory)) {
+		if (!(dc.getInitialDirectory()==workingDirectory)) {
 			tableView.getItems().clear();
+			if (workingDirectory != null) {
+				sd.setSrcDirectory(workingDirectory);
+				updatefilterInterpret();
+				updatefilterAlbum();
+				updatefilterYear();
+				updatefilterGenre();
+				ObservableList data = FXCollections.observableArrayList(sd.findAll());
+				tableView.setItems(data);
+				filterAlbum.setValue(null);
+				filterInterpret.setValue(null);
+				filterYear.setValue(null);
+				filterGenre.setValue(null);
+			}
 		}
-		if (workingDirectory != null) {
-			sd.setSrcDirectory(workingDirectory);
-			updatefilterInterpret();
-			updatefilterAlbum();
-			updatefilterYear();
-			updatefilterGenre();
-			ObservableList data = FXCollections.observableArrayList(sd.findAll());
-			tableView.setItems(data);
-			filterAlbum.setValue(null);
-			filterInterpret.setValue(null);
-			filterYear.setValue(null);
-			filterGenre.setValue(null);
-		}
+
 	}
 
 	/**
